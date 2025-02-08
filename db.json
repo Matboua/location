@@ -1,0 +1,119 @@
+{
+  "cars": [
+    {
+      "id": "1",
+      "image": "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "name": "Kia Picanto S20",
+      "description": "The most recent generation of chatbots has surfaced longstanding concerns about the growing sophistication and accessibility of artificial intelligence.",
+      "price_now": "150.00",
+      "price_before": "299.95",
+      "marc": "Kia",
+      "model": "2025",
+      "type": "Petrol",
+      "available": true
+    },
+    {
+      "carid": "3",
+      "image": "https://images.unsplash.com/photo-1531682607150-08b2476a545a?q=80&w=2061&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "name": "Ferrari Sport X100",
+      "description": "The most recent generation of chatbots has surfaced longstanding concerns about the growing sophistication and accessibility of artificial intelligence.",
+      "price_now": "466.00",
+      "price_before": "980.99",
+      "marc": "Ferrari",
+      "model": "2011",
+      "type": "Petrol",
+      "available": true,
+      "id": "3"
+    },
+    {
+      "id": "5",
+      "image": "https://images.unsplash.com/photo-1583121274602-3e2820c69888?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "name": "Nevrol",
+      "description": "The most recent generation of chatbots has surfaced longstanding concerns about the growing sophistication and accessibility of artificial intelligence.",
+      "price_now": "330.00",
+      "price_before": "788.00",
+      "marc": "Nevrol",
+      "model": "2011",
+      "type": "Petrol",
+      "available": true
+    },
+    {
+      "id": "6",
+      "image": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "name": "Running black Porsche sedan",
+      "description": "The most recent generation of chatbots has surfaced longstanding concerns about the growing sophistication and accessibility of artificial intelligence.",
+      "price_now": "656.00",
+      "price_before": "999.00",
+      "marc": "Porsch",
+      "model": "2024",
+      "type": "Petrol",
+      "available": false
+    },
+    {
+      "id": "7",
+      "image": "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "name": "Porsch via Los 455",
+      "description": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "price_now": "150.00",
+      "price_before": "220.00",
+      "marc": "Porsch",
+      "model": "2021",
+      "type": "Petrol",
+      "available": true
+    }
+  ],
+  "clients": [
+    {
+      "clientid": "1",
+      "first_name": "Oussama",
+      "last_name": "Matboua",
+      "phone": "0605776853",
+      "email": "matboua@gmail.com",
+      "city": "Inezgane",
+      "id": "1"
+    },
+    {
+      "clientid": "2",
+      "first_name": "Amine",
+      "last_name": "Jamali",
+      "phone": "0502302255",
+      "email": "oussamalolo@gmail",
+      "city": "souira",
+      "id": "2"
+    }
+  ],
+  "contracts": [
+    {
+      "contractid": "1",
+      "car_name": "Ferrari Sport X100",
+      "image": "https://images.unsplash.com/photo-1583121274602-3e2820c69888?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "car_id": "3",
+      "client_id": "1",
+      "start_date": "2025-01-26",
+      "end_date": "2025-01-31",
+      "amount": "1250.00",
+      "id": "1"
+    },
+    {
+      "contractid": "2",
+      "car_name": "Nevrol",
+      "image": "https://images.unsplash.com/photo-1583121274602-3e2820c69888?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "car_id": "5",
+      "client_id": "2",
+      "start_date": "2025-02-02",
+      "end_date": "2025-02-05",
+      "amount": "990.00",
+      "id": "2"
+    },
+    {
+      "id": "3",
+      "car_name": "Porsch via Los 455",
+      "image": "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "car_id": "7",
+      "client_id": "1",
+      "start_date": "2025-02-05",
+      "end_date": "2025-02-07",
+      "amount": "300.00"
+    }
+  ]
+}

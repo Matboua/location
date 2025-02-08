@@ -1,0 +1,108 @@
+import { faEdit, faFilePdf, faTrash } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
+
+export default function Contracts() {
+    const [contracts, setContracts] = useState([])
+    useEffect(()=>{
+        fetch('http://localhost:8000/contracts')
+        .then(res=>res.json())
+        .then(data=>setContracts(data))
+        .catch(err=>console.log(err.message))
+    }, [])
+    const deleteContract = (id) => {
+        if(confirm('Are You Sure?')) {
+            fetch('http://localhost:8000/contracts/'+id,{
+                method:'delete'
+            }).then(() => {
+                setContracts(contracts.filter((car)=>car.id !== id))
+            }).catch(err=>console.log(err))
+        }
+    }
+    const navigate = useNavigate()
+    const detailContract = (id) => {
+        window.open('/DetailContract/' + id, '_blank')
+
+    }
+    const editContract = (id) => {
+        navigate('/admin/contracts/edit/'+id)
+    }
+    return(
+        <div className="relative flex justify-center w-full overflow-x-auto shadow-md sm:rounded-lg">
+            <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 dark:border-gray-100">
+                <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                        <th scope="col" className="px-6 py-3">
+                            Id
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                            Car Name
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                            Car Id
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                            Client Id
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                            Start Date
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                            End Date
+                        </th>
+                        <th scope="col" className="px-6 py-3">
+                            Amount
+                        </th>
+                        <th scope="col" className="px-6 py-3 text-center">
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        contracts && contracts.map((item,key)=>(
+                            <tr key={key} className="bg-white border-b dark:bg-gray-800 dark:border-gray-800 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+                                <td className="p-6 py-4">
+                                    {item.id}
+                                </td>
+                                <td className="px-6 py-4 flex gap-2 items-center ">
+                                    <img className='w-13 border-2 border-white rounded-md' src={item.image} alt="Image" />
+                                    {item.car_name}
+                                </td>
+                                <td className="px-6 py-4">
+                                    {item.car_id}
+                                </td>
+                                <td className="px-6 py-4">
+                                    {item.client_id}
+                                </td>
+                                <td className="px-6 py-4">
+                                    {item.start_date}
+                                </td>
+                                <td className="px-6 py-4">
+                                    {item.end_date}
+                                </td>
+                                <td className="px-6 py-4">
+                                    ${item.amount}
+                                </td>
+                                <td className="px-6 py-2 text-center">
+                                    <button onClick={()=>{detailContract(item.id)}} className="py-1.5 px-4 text-blue-500 bg-blue-100 dark:bg-blue-700 dark:text-blue-100 hover:bg-blue-200 dark:hover:bg-blue-600 rounded-full cursor-pointer transition duration-300 ease-in-out">
+                                        <FontAwesomeIcon icon={faFilePdf} size="lg"/>
+                                    </button>
+                                    <button onClick={()=>{editContract(item.id)}}  className="mx-4 py-1.5 px-4 text-yellow-500 bg-yellow-100 dark:bg-yellow-700 dark:text-yellow-100 hover:bg-yellow-200 dark:hover:bg-yellow-600 rounded-full cursor-pointer transition duration-300 ease-in-out">
+                                        <FontAwesomeIcon icon={faEdit} size="lg"/>
+                                    </button>
+                                    <button onClick={()=>{deleteContract(item.id)}} className="py-1.5 px-4 text-red-500 bg-red-100 dark:bg-red-700 dark:text-red-100 hover:bg-red-200 dark:hover:bg-red-600 rounded-full cursor-pointer transition duration-300 ease-in-out">
+                                        <FontAwesomeIcon icon={faTrash} size="lg"/>
+                                    </button>
+                                    
+                                </td>
+                            </tr>
+                        ))
+                    }
+                    
+                </tbody>
+            </table>
+        </div>
+    )
+}
