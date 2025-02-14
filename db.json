@@ -60,6 +60,78 @@
       "model": "2021",
       "type": "Petrol",
       "available": true
+    },
+    {
+      "id": "8",
+      "image": "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "name": "Tesla Model S",
+      "description": "A high-performance electric sedan with cutting-edge technology and superior range.",
+      "price_now": "899.00",
+      "price_before": "1200.00",
+      "marc": "Tesla",
+      "model": "2023",
+      "type": "Electric",
+      "available": true
+    },
+    {
+      "id": "9",
+      "image": "https://tse3.mm.bing.net/th?id=OIP.iCBJfe6DdVrwAkQMFGcMqAHaEK&pid=Api",
+      "name": "Audi A6 E-Tron",
+      "description": "An upcoming electric sedan from Audi, the A6 E-Tron boasts a sleek design and advanced technology, promising impressive range and performance.",
+      "price_now": "550.00",
+      "price_before": "700.00",
+      "marc": "Audi",
+      "model": "2025",
+      "type": "Electric",
+      "available": true
+    },
+    {
+      "id": "10",
+      "image": "https://tse1.mm.bing.net/th?id=OIP.hZPxYIDY9IFTDg1mdS7qYQHaEK&pid=Api",
+      "name": "Honda SUV e:concept",
+      "description": "Honda's latest electric SUV concept features a futuristic five-screen dashboard and spacious interior, reflecting the brand's innovative design philosophy.",
+      "price_now": "450.00",
+      "price_before": "600.00",
+      "marc": "Honda",
+      "model": "2025",
+      "type": "Electric",
+      "available": true
+    },
+    {
+      "id": "11",
+      "image": "https://tse2.mm.bing.net/th?id=OIP.rUI3YV1jkJIYZP58NUlwFwHaEK&pid=Api",
+      "name": "Jaguar Type 00",
+      "description": "Jaguar's highly anticipated electric concept car showcases bold forms and proportions, with unique features like a wraparound windscreen and laser-etched logos.",
+      "price_now": "1000.00",
+      "price_before": "1300.00",
+      "marc": "Jaguar",
+      "model": "2025",
+      "type": "Electric",
+      "available": true
+    },
+    {
+      "id": "12",
+      "image": "https://tse2.mm.bing.net/th?id=OIP.9EeaR3ifs1nnaeBkFSVI9wHaEV&pid=Api",
+      "name": "Lamborghini Sian",
+      "description": "Lamborghini's first hybrid supercar, the Sian combines a V12 engine with electric power, delivering over 808bhp and a striking design.",
+      "price_now": "3000.00",
+      "price_before": "4000.00",
+      "marc": "Lamborghini",
+      "model": "2025",
+      "type": "Hybrid",
+      "available": true
+    },
+    {
+      "id": "13",
+      "image": "https://tse1.mm.bing.net/th?id=OIP.EI9RDBs3oc2aHgw236ofDgHaE_&pid=Api",
+      "name": "Lexus LF-30",
+      "description": "Lexus's electric car concept wows with its futuristic design and advanced technology, representing the brand's vision for future mobility.",
+      "price_now": "1200.00",
+      "price_before": "1500.00",
+      "marc": "Lexus",
+      "model": "2025",
+      "type": "Electric",
+      "available": true
     }
   ],
   "clients": [
@@ -77,17 +149,161 @@
       "first_name": "Amine",
       "last_name": "Jamali",
       "phone": "0502302255",
-      "email": "oussamalolo@gmail",
-      "city": "souira",
+      "email": "oussamalolo@gmail.com",
+      "city": "Souira",
       "id": "2"
+    },
+    {
+      "id": "3",
+      "first_name": "Othman",
+      "last_name": "Elhyane",
+      "phone": "0601022331",
+      "email": "elhyane@gmail.com",
+      "city": "Agadir"
+    },
+    {
+      "id": "4",
+      "first_name": "Yassine",
+      "last_name": "Bennani",
+      "phone": "0654789652",
+      "email": "ybennani@hotmail.com",
+      "city": "Casablanca"
+    },
+    {
+      "id": "5",
+      "first_name": "Fatima",
+      "last_name": "El Amrani",
+      "phone": "0701122334",
+      "email": "fatima.elamrani@yahoo.com",
+      "city": "Marrakech"
+    },
+    {
+      "id": "6",
+      "first_name": "Khalid",
+      "last_name": "Saidi",
+      "phone": "0623344556",
+      "email": "ksaidi@gmail.com",
+      "city": "Rabat"
+    },
+    {
+      "id": "7",
+      "first_name": "Siham",
+      "last_name": "Ouchrif",
+      "phone": "0612345678",
+      "email": "siham.ouchrif@mail.com",
+      "city": "Tanger"
+    },
+    {
+      "id": "8",
+      "first_name": "Hamza",
+      "last_name": "El Fassi",
+      "phone": "0667891234",
+      "email": "hamza.fassi@outlook.com",
+      "city": "Fes"
+    },
+    {
+      "id": "9",
+      "first_name": "Nour",
+      "last_name": "Belkacem",
+      "phone": "0609988776",
+      "email": "nour.belkacem@gmail.com",
+      "city": "Tetouan"
+    },
+    {
+      "id": "10",
+      "first_name": "Mohamed",
+      "last_name": "Tazi",
+      "phone": "0687452369",
+      "email": "mohamed.tazi@protonmail.com",
+      "city": "Oujda"
+    },
+    {
+      "id": "11",
+      "first_name": "Reda",
+      "last_name": "Moulay",
+      "phone": "0603456789",
+      "email": "reda.moulay@gmail.com",
+      "city": "Casablanca"
+    },
+    {
+      "id": "12",
+      "first_name": "Salma",
+      "last_name": "Boukili",
+      "phone": "0654321987",
+      "email": "salma.boukili@hotmail.com",
+      "city": "Meknes"
+    },
+    {
+      "id": "13",
+      "first_name": "Zakaria",
+      "last_name": "Benali",
+      "phone": "0623456789",
+      "email": "zakaria.benali@mail.com",
+      "city": "Essaouira"
+    },
+    {
+      "id": "14",
+      "first_name": "Imane",
+      "last_name": "Chafai",
+      "phone": "0676543210",
+      "email": "imane.chafai@outlook.com",
+      "city": "El Jadida"
+    },
+    {
+      "id": "15",
+      "first_name": "Mehdi",
+      "last_name": "El Idrissi",
+      "phone": "0612349087",
+      "email": "mehdi.idrissi@gmail.com",
+      "city": "Kenitra"
+    },
+    {
+      "id": "16",
+      "first_name": "Amina",
+      "last_name": "Derkaoui",
+      "phone": "0698765432",
+      "email": "amina.derkaoui@yahoo.com",
+      "city": "Taza"
+    },
+    {
+      "id": "17",
+      "first_name": "Anas",
+      "last_name": "Fakiri",
+      "phone": "0609876543",
+      "email": "anas.fakiri@mail.com",
+      "city": "Nador"
+    },
+    {
+      "id": "18",
+      "first_name": "Lina",
+      "last_name": "El Yamani",
+      "phone": "0687654321",
+      "email": "lina.yamani@protonmail.com",
+      "city": "Dakhla"
+    },
+    {
+      "id": "19",
+      "first_name": "Hassan",
+      "last_name": "Belhaj",
+      "phone": "0632109876",
+      "email": "hassan.belhaj@gmail.com",
+      "city": "Settat"
+    },
+    {
+      "id": "20",
+      "first_name": "Sara",
+      "last_name": "Ouazzani",
+      "phone": "0611223344",
+      "email": "sara.ouazzani@hotmail.com",
+      "city": "Beni Mellal"
     }
   ],
   "contracts": [
     {
       "contractid": "1",
-      "car_name": "Ferrari Sport X100",
-      "image": "https://images.unsplash.com/photo-1583121274602-3e2820c69888?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "car_id": "3",
+      "car_name": "Kia Picanto S20",
+      "image": "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "car_id": "1",
       "client_id": "1",
       "start_date": "2025-01-26",
       "end_date": "2025-01-31",
@@ -114,6 +330,176 @@
       "start_date": "2025-02-05",
       "end_date": "2025-02-07",
       "amount": "300.00"
+    },
+    {
+      "id": "4",
+      "car_name": "Tesla Model S",
+      "image": "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "car_id": "8",
+      "client_id": "2",
+      "start_date": "2025-02-10",
+      "end_date": "2025-02-12",
+      "amount": "450.00"
+    },
+    {
+      "id": "5",
+      "car_name": "Audi A6 E-Tron",
+      "image": "https://tse3.mm.bing.net/th?id=OIP.iCBJfe6DdVrwAkQMFGcMqAHaEK&pid=Api",
+      "car_id": "9",
+      "client_id": "3",
+      "start_date": "2025-02-15",
+      "end_date": "2025-02-17",
+      "amount": "500.00"
+    },
+    {
+      "id": "6",
+      "car_name": "Honda SUV e:concept",
+      "image": "https://tse1.mm.bing.net/th?id=OIP.hZPxYIDY9IFTDg1mdS7qYQHaEK&pid=Api",
+      "car_id": "10",
+      "client_id": "4",
+      "start_date": "2025-02-20",
+      "end_date": "2025-02-22",
+      "amount": "600.00"
+    },
+    {
+      "id": "7",
+      "car_name": "Jaguar Type 00",
+      "image": "https://tse2.mm.bing.net/th?id=OIP.rUI3YV1jkJIYZP58NUlwFwHaEK&pid=Api",
+      "car_id": "11",
+      "client_id": "5",
+      "start_date": "2025-02-25",
+      "end_date": "2025-02-27",
+      "amount": "700.00"
+    },
+    {
+      "id": "8",
+      "car_name": "Lamborghini Sian",
+      "image": "https://tse2.mm.bing.net/th?id=OIP.9EeaR3ifs1nnaeBkFSVI9wHaEV&pid=Api",
+      "car_id": "12",
+      "client_id": "6",
+      "start_date": "2025-03-01",
+      "end_date": "2025-03-03",
+      "amount": "3500.00"
+    },
+    {
+      "id": "9",
+      "car_name": "Lexus LF-30",
+      "image": "https://tse1.mm.bing.net/th?id=OIP.EI9RDBs3oc2aHgw236ofDgHaE_&pid=Api",
+      "car_id": "13",
+      "client_id": "7",
+      "start_date": "2025-03-05",
+      "end_date": "2025-03-07",
+      "amount": "1300.00"
+    },
+    {
+      "id": "10",
+      "car_name": "Ferrari Sport X100",
+      "image": "https://images.unsplash.com/photo-1531682607150-08b2476a545a?q=80&w=2061&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "car_id": "3",
+      "client_id": "8",
+      "start_date": "2025-03-10",
+      "end_date": "2025-03-12",
+      "amount": "1500.00"
+    },
+    {
+      "id": "11",
+      "car_name": "Kia Picanto S20",
+      "image": "https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "car_id": "1",
+      "client_id": "9",
+      "start_date": "2025-03-15",
+      "end_date": "2025-03-17",
+      "amount": "200.00"
+    },
+    {
+      "id": "12",
+      "car_name": "Nevrol",
+      "image": "https://images.unsplash.com/photo-1583121274602-3e2820c69888?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "car_id": "5",
+      "client_id": "10",
+      "start_date": "2025-03-20",
+      "end_date": "2025-03-22",
+      "amount": "350.00"
+    },
+    {
+      "id": "13",
+      "car_name": "Running black Porsche sedan",
+      "image": "https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "car_id": "6",
+      "client_id": "11",
+      "start_date": "2025-03-25",
+      "end_date": "2025-03-27",
+      "amount": "800.00"
+    },
+    {
+      "id": "14",
+      "car_name": "Tesla Model S",
+      "image": "https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "car_id": "8",
+      "client_id": "12",
+      "start_date": "2025-03-30",
+      "end_date": "2025-04-01",
+      "amount": "900.00"
+    },
+    {
+      "id": "15",
+      "car_name": "Audi A6 E-Tron",
+      "image": "https://tse3.mm.bing.net/th?id=OIP.iCBJfe6DdVrwAkQMFGcMqAHaEK&pid=Api",
+      "car_id": "9",
+      "client_id": "13",
+      "start_date": "2025-04-05",
+      "end_date": "2025-04-07",
+      "amount": "550.00"
+    },
+    {
+      "id": "16",
+      "car_name": "Honda SUV e:concept",
+      "image": "https://tse1.mm.bing.net/th?id=OIP.hZPxYIDY9IFTDg1mdS7qYQHaEK&pid=Api",
+      "car_id": "10",
+      "client_id": "14",
+      "start_date": "2025-04-10",
+      "end_date": "2025-04-12",
+      "amount": "450.00"
+    },
+    {
+      "id": "17",
+      "car_name": "Jaguar Type 00",
+      "image": "https://tse2.mm.bing.net/th?id=OIP.rUI3YV1jkJIYZP58NUlwFwHaEK&pid=Api",
+      "car_id": "11",
+      "client_id": "15",
+      "start_date": "2025-04-15",
+      "end_date": "2025-04-17",
+      "amount": "1000.00"
+    },
+    {
+      "id": "18",
+      "car_name": "Lamborghini Sian",
+      "image": "https://tse2.mm.bing.net/th?id=OIP.9EeaR3ifs1nnaeBkFSVI9wHaEV&pid=Api",
+      "car_id": "12",
+      "client_id": "16",
+      "start_date": "2025-04-20",
+      "end_date": "2025-04-22",
+      "amount": "3000.00"
+    },
+    {
+      "id": "19",
+      "car_name": "Lexus LF-30",
+      "image": "https://tse1.mm.bing.net/th?id=OIP.EI9RDBs3oc2aHgw236ofDgHaE_&pid=Api",
+      "car_id": "13",
+      "client_id": "17",
+      "start_date": "2025-04-25",
+      "end_date": "2025-04-27",
+      "amount": "1200.00"
+    },
+    {
+      "id": "20",
+      "car_name": "Ferrari Sport X100",
+      "image": "https://images.unsplash.com/photo-1531682607150-08b2476a545a?q=80&w=2061&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "car_id": "3",
+      "client_id": "18",
+      "start_date": "2025-04-30",
+      "end_date": "2025-05-02",
+      "amount": "1500.00"
     }
   ]
 }

@@ -43,7 +43,7 @@ export default function DetailContract() {
                     <View style={{ flexDirection: "col", alignItems: "center", gap:"5px", width: "100%" }}>
                         <Text>The Contract Information</Text>
                         <View style={{ flexDirection: "row", width: "100%" }}>
-                            <Image src={contract.image} style={{ width: "450px" }} />
+                            <Image src={contract.image} style={{ width: "400px" }} />
                             {/* Contract Table */}
                             <View style={{ display: 'flex', flexDirection: "column", justifyContent: "space-between", backgroundColor: "#aaa", width: '100%'}}>
                                 {/* Contract Id */}
@@ -51,20 +51,10 @@ export default function DetailContract() {
                                     <Text style={{padding:"5px", backgroundColor:"#fff", margin: 1, fontWeight: 'bold', flex: 1 }}>Contract Id</Text>
                                     <Text style={{padding:"5px", backgroundColor:"#fff", margin: 1, flex: 1 }}>{contract ? contract.id : 'Loading...'}</Text>
                                 </View>
-                                {/* Client Id */}
-                                <View style={{ flexDirection: 'row'}}>
-                                    <Text style={{padding:"5px", backgroundColor:"#fff", margin: 1, fontWeight: 'bold', flex: 1 }}>Client Id</Text>
-                                    <Text style={{padding:"5px", backgroundColor:"#fff", margin: 1, flex: 1 }}>{contract ? contract.id : 'Loading...'}</Text>
-                                </View>
                                 {/* Client Name */}
                                 <View style={{ flexDirection: 'row'}}>
                                     <Text style={{padding:"5px", backgroundColor:"#fff", margin: 1, fontWeight: 'bold', flex: 1 }}>Client Name</Text>
                                     <Text style={{padding:"5px", backgroundColor:"#fff", margin: 1, flex: 1 }}>{client ? client.first_name + " " + client.last_name : 'Loading...'}</Text>
-                                </View>
-                                {/* Car Id */}
-                                <View style={{ flexDirection: 'row'}}>
-                                    <Text style={{padding:"5px", backgroundColor:"#fff", margin: 1, fontWeight: 'bold', flex: 1 }}>Car Id</Text>
-                                    <Text style={{padding:"5px", backgroundColor:"#fff", margin: 1, flex: 1 }}>{contract ? contract.car_id : 'Loading...'}</Text>
                                 </View>
                                 {/* Car Name */}
                                 <View style={{ flexDirection: 'row'}}>
@@ -80,6 +70,11 @@ export default function DetailContract() {
                                 <View style={{ flexDirection: 'row'}}>
                                     <Text style={{padding:"5px", backgroundColor:"#fff", margin: 1, fontWeight: 'bold', flex: 1 }}>End Date</Text>
                                     <Text style={{padding:"5px", backgroundColor:"#fff", margin: 1, flex: 1 }}>{contract ? contract.end_date : 'Loading...'}</Text>
+                                </View>
+                                {/* Amount */}
+                                <View style={{ flexDirection: 'row'}}>
+                                    <Text style={{padding:"5px", backgroundColor:"#fff", margin: 1, fontWeight: 'bold', flex: 1 }}>Amount</Text>
+                                    <Text style={{padding:"5px", backgroundColor:"#fff", margin: 1, flex: 1 }}>${contract ? contract.amount : 'Loading...'}</Text>
                                 </View>
                             </View>
                         </View>

@@ -31,7 +31,7 @@ export default function Cars() {
     const unavailableStyle = {display: "flex",color:'ff3333', background:"#ff000055", padding:"5px", borderRadius:"5px", justifyContent:'center'}
     return(
         <div className="relative flex justify-center w-full overflow-x-auto shadow-md sm:rounded-lg">
-            <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 dark:border-gray-100">
+            <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 border border-gray-300 dark:border-gray-700">
                 <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" className="px-6 py-3">
@@ -66,7 +66,7 @@ export default function Cars() {
                 <tbody>
                     {
                         cars && cars.map((item,key)=>(
-                            <tr key={key} className="bg-white border-b dark:bg-gray-800 dark:border-gray-800 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <tr key={key} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
                                 <td className="p-6 py-4">
                                     {item.id}
                                 </td>
@@ -94,7 +94,7 @@ export default function Cars() {
                                     {item.available ? "Available" : "Unavailable"}
                                     </span>
                                 </td>
-                                <td className="px-6 py-2 text-center">
+                                <td className="px-6 py-2 text-center flex whitespace-nowrap">
                                     <button onClick={()=>{detailCar(item.id)}} className="py-1.5 px-4 text-blue-500 bg-blue-100 dark:bg-blue-700 dark:text-blue-100 hover:bg-blue-200 dark:hover:bg-blue-600 rounded-full cursor-pointer transition duration-300 ease-in-out">
                                         <FontAwesomeIcon icon={faInfoCircle} size="lg"/>
                                     </button>

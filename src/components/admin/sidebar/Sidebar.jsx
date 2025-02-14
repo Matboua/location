@@ -1,9 +1,12 @@
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome, faCar, faUsers, faCarOn, faFile } from '@fortawesome/free-solid-svg-icons';
-import { Link, useLocation } from 'react-router-dom';
+import { faHome, faCar, faUsers, faCarOn, faFile} from '@fortawesome/free-solid-svg-icons';
+import { useLocation, useNavigate } from 'react-router-dom';
+
 
 export default function Sidebar() {
+    
+    const navigate = useNavigate()
     const location = useLocation()
     const isHome = location.pathname.includes('/home')
     const isCars = location.pathname.includes('/cars')
@@ -11,37 +14,51 @@ export default function Sidebar() {
     const isContracts = location.pathname.includes('/contracts')
     return(
         <aside className="dark:bg-gray-900 bg-white h-full row-span-2">
-            <div className="logo h-[73px] flex items-center p-5">
-                <a href="#" className="dark:text-gray-100 text-gray-900 text-2xl"><FontAwesomeIcon icon={faCarOn} /> <span>Location</span></a>
-            </div>
-            <nav>
-                <ul className="dark:text-gray-100 text-gray-900 flex flex-col">
-                    <li>
-                        <Link className="w-full block py-3 hover:bg-slate-300 dark:hover:bg-slate-600 p-5" to="/admin/home">
-                            <FontAwesomeIcon icon={faHome} />
-                            <span className='p-2'>Home</span>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link className="w-full block py-3 hover:bg-slate-300 dark:hover:bg-slate-600 p-5" to="/admin/clients">
-                            <FontAwesomeIcon icon={faUsers} /> 
-                            <span className='p-2'>Clients</span>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link className="w-full block py-3 hover:bg-slate-300 dark:hover:bg-slate-600 p-5" to="/admin/cars">
-                            <FontAwesomeIcon icon={faCar} /> 
-                            <span className='p-2'>Cars</span>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link  className="w-full block py-3 hover:bg-slate-300 dark:hover:bg-slate-600 p-5" to="/admin/contracts">
-                            <FontAwesomeIcon icon={faFile }/> 
-                            <span className='p-2'>Contract</span>
-                        </Link>
-                    </li>
-                </ul>
-            </nav>
+            <table className='dark:text-gray-100 text-gray-900 w-screen cursor-pointer'>
+                <tbody>
+                    {/* Logo */}
+                    <tr onClick={()=>{navigate('/admin/cars')}} className='h-[73px]'>
+                        <td className='w-4 p-3 text-center'><FontAwesomeIcon icon={faCarOn} size='xl' /></td>
+                        <td className='links'><span>Location</span></td>
+                    </tr>
+                    {/* Home*/}
+                    <tr onClick={()=>{navigate('/admin/home')}} className={
+                        isHome 
+                        ? "bg-slate-300 dark:bg-slate-600"
+                        : "hover:bg-slate-300 dark:hover:bg-slate-600"
+                    }>
+                        <td className='w-4 p-3 text-center'><FontAwesomeIcon icon={faHome} /></td>
+                        <td className='links'><span>Home</span></td>
+                    </tr>
+                    {/* Clients*/}
+                    <tr onClick={()=>{navigate('/admin/clients')}} className={
+                        isClients 
+                        ? "bg-slate-300 dark:bg-slate-600"
+                        : "hover:bg-slate-300 dark:hover:bg-slate-600"
+                    }>
+                        <td className='w-4 p-3 text-center'><FontAwesomeIcon icon={faUsers} /></td>
+                        <td className='links'><span>Clients</span></td>
+                    </tr>
+                    {/* Cars*/}
+                    <tr onClick={()=>{navigate('/admin/cars')}} className={
+                        isCars 
+                        ? "bg-slate-300 dark:bg-slate-600"
+                        : "hover:bg-slate-300 dark:hover:bg-slate-600"
+                    }>
+                        <td className='w-4 p-3 text-center'><FontAwesomeIcon icon={faCar} /></td>
+                        <td className='links'><span>Cars</span></td>
+                    </tr>
+                    {/* Contracts*/}
+                    <tr onClick={()=>{navigate('/admin/contracts')}} className={
+                        isContracts
+                        ? "bg-slate-300 dark:bg-slate-600"
+                        : "hover:bg-slate-300 dark:hover:bg-slate-600"
+                    }>
+                        <td className='w-4 p-3 text-center'><FontAwesomeIcon icon={faFile} /></td>
+                        <td className='links'><span>Contracts</span></td>
+                    </tr>
+                </tbody>
+            </table>
         </aside>
     )
 }
