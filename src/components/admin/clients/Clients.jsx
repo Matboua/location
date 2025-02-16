@@ -77,14 +77,7 @@ export default function CLients() {
                                 <td className="px-6 py-4">
                                     {item.city}
                                 </td>
-                                
-                                {/* <td className="px-6 py-2 text-center">
-                                    <button onClick={()=>{detailCar(item.id)}} className="bg-blue-600 py-2 px-6 text-gray-100 rounded-full cursor-pointer">Detail</button>
-                                    <button className="mx-5 bg-yellow-600 py-2 px-6 text-gray-100 rounded-full cursor-pointer">Modify</button>
-                                    <button onClick={()=>{deleteCar(item.id)}} className="bg-red-600 py-2 px-6 text-gray-100 rounded-full cursor-pointer">Delete</button>
-                                    
-                                </td> */}
-                                <td className="px-6 py-2 text-center flex whitespace-nowrap">
+                                <td className="px-6 py-2 text-center whitespace-nowrap">
                                     <button onClick={()=>{detailClient(item.id)}} className="py-1.5 px-4 text-blue-500 bg-blue-100 dark:bg-blue-700 dark:text-blue-100 hover:bg-blue-200 dark:hover:bg-blue-600 rounded-full cursor-pointer transition duration-300 ease-in-out">
                                         <FontAwesomeIcon icon={faInfoCircle} size="lg"/>
                                     </button>

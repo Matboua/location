@@ -85,7 +85,7 @@ export default function Contracts() {
                                 <td className="px-6 py-4">
                                     ${item.amount}
                                 </td>
-                                <td className="px-6 py-2 text-center flex whitespace-nowrap">
+                                <td className="px-6 py-2 text-center whitespace-nowrap">
                                     <button onClick={()=>{detailContract(item.id)}} className="py-1.5 px-4 text-blue-500 bg-blue-100 dark:bg-blue-700 dark:text-blue-100 hover:bg-blue-200 dark:hover:bg-blue-600 rounded-full cursor-pointer transition duration-300 ease-in-out">
                                         <FontAwesomeIcon icon={faFilePdf} size="lg"/>
                                     </button>

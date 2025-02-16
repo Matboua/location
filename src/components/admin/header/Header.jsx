@@ -10,11 +10,17 @@ export default function Header() {
         document.documentElement.classList.toggle("dark");
     }
     // Urls
+    const isHome = useLocation().pathname.includes('/home');
     const isCars = useLocation().pathname.includes('/cars');
     const isClients = useLocation().pathname.includes('/clients');
     const isContracts = useLocation().pathname.includes('/contract');
     return (
         <header className="dark:text-gray-100 text-gray-900 dark:bg-gray-900 bg-white p-4 min-h-[73px] flex items-center">
+            {isHome && (
+                <div className="flex items-center justify-between w-full">
+                    <h2 className="text-xl">Home Page</h2>
+                </div>
+            )}
             {isCars && (
                 <div className="flex items-center justify-between w-full">
                     <h2 className="text-xl">Cars Page</h2>
