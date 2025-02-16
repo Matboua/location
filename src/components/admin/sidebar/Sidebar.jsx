@@ -27,7 +27,7 @@ export default function Sidebar() {
             <tbody>
                 {/* Logo */}
                 <tr onClick={()=>{navigate('/admin/cars')}} className='h-[73px]'>
-                <td className='w-4 p-3 text-center'><FontAwesomeIcon icon={faCarOn} size='xl' /></td>
+                <td className='w-4 p-3 text-center'><FontAwesomeIcon className="text-blue-600" icon={faCarOn} size='xl' /></td>
                 <td className='links text-2xl'><span>Location</span></td>
                 </tr>
                 {/* Home*/}

@@ -9,31 +9,32 @@ export default function Header() {
         setDark(!dark);
         document.documentElement.classList.toggle("dark");
     }
-    // useLocation
-    const isUser = useLocation().pathname.includes('/');
+    // Urls
+    const isHome = useLocation().pathname === '/';
+    const isCars = useLocation().pathname.includes('/cars');
+    const isArticles = useLocation().pathname.includes('/articles');
+    const isAbout = useLocation().pathname.includes('/about');
+    const isContact = useLocation().pathname.includes('/contact');
     return (
-        <header className="dark:text-gray-100 text-gray-900 dark:bg-gray-900 bg-white p-4 min-h-[73px] flex items-center">
-            {isUser && (
+        <header className="sticky top-0 z-10 dark:text-gray-100 text-gray-900 dark:bg-gray-900 bg-white p-4 min-h-[73px] flex items-center" style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}>
                 <div className="relative flex items-center justify-between w-full px-10">
-                    <a href="#" className="dark:text-gray-100 text-gray-900 text-2xl font-medium"><FontAwesomeIcon icon={faCarOn} /><span> Carvoy</span></a>
+                    <a href="#" className="dark:text-gray-100 text-gray-900 text-2xl font-medium"><FontAwesomeIcon className="text-blue-600" icon={faCarOn} /><span> Carvoy</span></a>
                     <ul className="flex gap-15 absolute left-[50%] font-medium text-" style={{transform:"translateX(-50%)"}}>
-                        <li><Link>Home</Link></li>
-                        <li><Link>Cars & Vehicles</Link></li>
-                        <li><Link>Services</Link></li>
-                        <li><Link>About Us</Link></li>
-                        <li><Link>Contact Us</Link></li>
+                        <li className={isHome?"text-blue-600":"hover:text-blue-600"}><Link to='/'>Home</Link></li>
+                        <li className={isCars?"text-blue-600":"hover:text-blue-600"}><Link to='/cars'>Cars & Vehicles</Link></li>
+                        <li className={isArticles?"text-blue-600":"hover:text-blue-600"}><Link to='/articles'>Articles</Link></li>
+                        <li className={isAbout?"text-blue-600":"hover:text-blue-600"}><Link to='/about-us'>About Us</Link></li>
+                        <li className={isContact?"text-blue-600":"hover:text-blue-600"}><Link to='/contact-us'>Contact Us</Link></li>
                     </ul>
                     <div>
                         <FontAwesomeIcon icon={faCartPlus} size="xl" className="cursor-pointer"/>
                         {/* Dark Mode Button */}
-                        <button className=" w-10 h-10 py-2 px-3 ml-3 cursor-pointer rounded-xl dark:bg-gray-800 hover:dark:bg-gray-700 dark:text-gray-100 bg-gray-300 hover:bg-gray-400 font-medium" onClick={()=> darkModeHandler()}>
+                        <button className=" w-10 h-10 py-2 px-3 ml-3 cursor-pointer rounded-xl dark:bg-gray-800 hover:dark:bg-gray-700 text-blue-600 bg-blue-100 hover:bg-blue-200 font-medium" onClick={()=> darkModeHandler()}>
                             { !dark && <FontAwesomeIcon icon={faSun} /> }
                             { dark && <FontAwesomeIcon icon={faMoon} /> }
                         </button>
                     </div>
                 </div>
-            )}
-            
         </header>
     )
 }
