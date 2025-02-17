@@ -3,6 +3,7 @@
 import { faFacebook, faGithub, faInstagram, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faCarOn, faEnvelope, faPaperPlane, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
     return (
@@ -12,9 +13,9 @@ export default function Footer() {
                     <div className="-mx-4 flex flex-wrap justify-between">
                         {/* First */}
                         <div className="px-4 my-5 w-full xl:w-1/4">
-                            <a href="/" className="block w-56 mb-8 text-3xl">
+                            <Link href="/" className="block w-56 mb-8 text-3xl">
                                 <FontAwesomeIcon className="text-blue-600" icon={faCarOn}/> Cavoy
-                            </a>
+                            </Link>
                             <p className="text-justify">
                             At Carvoy, we pride ourselves on offering top-notch car rental services tailored to meet your needs. Located in the heart of Agadir, we provide seamless pick-up services across all of Morocco.
                             </p>
@@ -25,10 +26,10 @@ export default function Footer() {
                             <h2 className="inline-block text-2xl pb-4 mb-4 border-b-4 border-blue-600">Our Pages</h2>
                             </div>
                             <ul className="leading-8">
-                            <li><a href="/" className="hover:text-blue-400">Home Page</a></li>
-                            <li><a href="/cars" className="hover:text-blue-400">Cars & Vehicles</a></li>
-                            <li><a href="/articles" className="hover:text-blue-400">Articles Page</a></li>
-                            <li><a href="/admin/cars" className="hover:text-blue-400">Login Page</a></li>
+                            <li><Link href="/" className="hover:text-blue-400">Home Page</Link></li>
+                            <li><Link href="/cars" className="hover:text-blue-400">Cars & Vehicles</Link></li>
+                            <li><Link href="/articles" className="hover:text-blue-400">Articles Page</Link></li>
+                            <li><Link href="/admin/cars" className="hover:text-blue-400">Login Page</Link></li>
                             </ul>
                         </div>
                         {/* Third */}
@@ -37,10 +38,10 @@ export default function Footer() {
                             <h2 className="inline-block text-2xl pb-4 mb-4 border-b-4 border-blue-600">Privacy Pages</h2>
                             </div>
                             <ul className="leading-8">
-                            <li><a href="/privacy-policy" className="hover:text-blue-400">Privacy Policy</a></li>
-                            <li><a href="/terms-and-conditions" className="hover:text-blue-400">Terms &amp; Conditions</a></li>
-                            <li><a href="/about-us" className="hover:text-blue-400">About Us</a></li>
-                            <li><a href="/contact-us" className="hover:text-blue-400">Contact Us</a></li>
+                            <li><Link href="/privacy-policy" className="hover:text-blue-400">Privacy Policy</Link></li>
+                            <li><Link href="/terms-and-conditions" className="hover:text-blue-400">Terms &amp; Conditions</Link></li>
+                            <li><Link href="/about-us" className="hover:text-blue-400">About Us</Link></li>
+                            <li><Link href="/contact-us" className="hover:text-blue-400">Contact Us</Link></li>
                             </ul>
                         </div>
                         {/* Fourth */}
@@ -51,24 +52,24 @@ export default function Footer() {
                             </div>
                             {/* Social Media */}
                             <div className="flex gap-3">
-                                <a href="#" className="inline-flex items-center justify-center h-8 w-8 border dark:border-gray-100 rounded-full mr-1 hover:text-blue-400 hover:border-blue-400">
+                                <a href="https://www.linkedin.com/in/matboua/" target="_blank" className="inline-flex items-center justify-center h-8 w-8 border dark:border-gray-100 rounded-full mr-1 hover:text-blue-400 hover:border-blue-400">
                                     <FontAwesomeIcon icon={faFacebook} />
                                 </a>
-                                <a href="#" className="inline-flex items-center justify-center h-8 w-8 border dark:border-gray-100 rounded-full mr-1 hover:text-blue-400 hover:border-blue-400">
+                                <a href="https://www.linkedin.com/in/matboua/" target="_blank" className="inline-flex items-center justify-center h-8 w-8 border dark:border-gray-100 rounded-full mr-1 hover:text-blue-400 hover:border-blue-400">
                                     <FontAwesomeIcon icon={faX} />
                                 </a>
-                                <a href="#" className="inline-flex items-center justify-center h-8 w-8 border dark:border-gray-100 rounded-full mr-1 hover:text-blue-400 hover:border-blue-400">
+                                <a href="https://www.linkedin.com/in/matboua/" target="_blank" className="inline-flex items-center justify-center h-8 w-8 border dark:border-gray-100 rounded-full mr-1 hover:text-blue-400 hover:border-blue-400">
                                 <FontAwesomeIcon icon={faInstagram} />
                                 </a>
-                                <a href="#" className="inline-flex items-center justify-center h-8 w-8 border dark:border-gray-100 rounded-full mr-1 hover:text-blue-400 hover:border-blue-400">
+                                <a href="https://www.linkedin.com/in/matboua/" target="_blank" className="inline-flex items-center justify-center h-8 w-8 border dark:border-gray-100 rounded-full mr-1 hover:text-blue-400 hover:border-blue-400">
                                 <FontAwesomeIcon icon={faGithub} />
                                 </a>
-                                <a href="#" className="inline-flex items-center justify-center h-8 w-8 border dark:border-gray-100 rounded-full hover:text-blue-400 hover:border-blue-400">
+                                <a href="https://www.linkedin.com/in/matboua/" target="_blank" className="inline-flex items-center justify-center h-8 w-8 border dark:border-gray-100 rounded-full hover:text-blue-400 hover:border-blue-400">
                                 <FontAwesomeIcon icon={faLinkedin} />
                                 </a>
                             </div>
                             {/* Subscribe */}
-                            <form className="relative w-full">
+                            <form className="relative w-full" onSubmit={(e)=>{e.preventDefault()}}>
                                 <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none ">
                                     <FontAwesomeIcon icon={faEnvelope}/>
                                 </div>
