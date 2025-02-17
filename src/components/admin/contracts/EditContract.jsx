@@ -7,7 +7,7 @@ export default function EditContract() {
     const {contractid} = useParams()
     // Get Data
     useEffect(() => {
-            fetch('http://localhost:8000/contracts/' + contractid)
+            fetch('https://json-server-api-q84y.onrender.com/contracts/' + contractid)
             .then(res => res.json())
                 .then(data => {
                     setCar_name(data.car_name);
@@ -41,7 +41,7 @@ export default function EditContract() {
                     start_date,
                     end_date,
                     amount:parseFloat(amount).toFixed(2)}
-                fetch('http://localhost:8000/contracts/' + contractid, {
+                fetch('https://json-server-api-q84y.onrender.com/contracts/' + contractid, {
                     method:'PUT',
                     headers:{
                         'content-type':'application/json'
@@ -58,7 +58,7 @@ export default function EditContract() {
                 const [cars, setCars] = useState([])
             // Function
                 useEffect(()=>{
-                    fetch('http://localhost:8000/cars')
+                    fetch('https://json-server-api-q84y.onrender.com/cars')
                     .then(res=>res.json())
                     .then(data=>setCars(data))
                     .catch(err=>console.log(err))
@@ -68,7 +68,7 @@ export default function EditContract() {
                 const [clients, setClients] = useState([])
             // Function
                 useEffect(()=>{
-            fetch('http://localhost:8000/clients')
+            fetch('https://json-server-api-q84y.onrender.com/clients')
             .then(res=>res.json())
             .then(data=>setClients(data))
             .catch(err=>console.log(err))

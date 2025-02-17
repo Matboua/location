@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 export default function Main() {
     const [cars, setCars] = useState('')
     useEffect(()=>{
-        fetch('http://localhost:8000/cars')
+        fetch('https://json-server-api-q84y.onrender.com/cars')
         .then(res=>res.json())
         .then(data=>setCars(data))
         .catch(err=>console.log(err.message))

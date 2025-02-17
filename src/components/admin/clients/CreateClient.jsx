@@ -11,7 +11,7 @@ export default function CreateClient() {
     const navigate = useNavigate()
     // To get the next id
     useEffect(() => {
-        fetch('http://localhost:8000/clients')
+        fetch('https://json-server-api-q84y.onrender.com/clients')
             .then(response => response.json())
             .then(data => {
                 const maxId = data.reduce((max, client) => Math.max(max, client.id), 0);
@@ -28,7 +28,7 @@ export default function CreateClient() {
             phone,
             email,
             city}
-        fetch('http://localhost:8000/clients', {
+        fetch('https://json-server-api-q84y.onrender.com/clients', {
             method:'POST',
             headers:{
                 'content-type':'application/json'

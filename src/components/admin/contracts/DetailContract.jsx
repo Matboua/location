@@ -9,14 +9,14 @@ export default function DetailContract() {
     const [car, setCar] = useState();
 
     useEffect(() => {
-        fetch(`http://localhost:8000/contracts/${contractid}`)
+        fetch(`https://json-server-api-q84y.onrender.com/contracts/${contractid}`)
             .then(res => res.json())
             .then(data => setContract(data))
             .catch(err => console.log(err.message));
     }, [contractid]);
     useEffect(() => {
         if (contract) {
-            fetch(`http://localhost:8000/clients/${contract.client_id}`)
+            fetch(`https://json-server-api-q84y.onrender.com/clients/${contract.client_id}`)
             .then(res => res.json())
             .then(data => setClient(data))
             .catch(err => console.log(err.message));
@@ -24,7 +24,7 @@ export default function DetailContract() {
     }, [contract]);
     useEffect(() => {
         if (contract) {
-            fetch(`http://localhost:8000/cars/${contract.car_id}`)
+            fetch(`https://json-server-api-q84y.onrender.com/cars/${contract.car_id}`)
             .then(res => res.json())
             .then(data => setCar(data))
             .catch(err => console.log(err.message));

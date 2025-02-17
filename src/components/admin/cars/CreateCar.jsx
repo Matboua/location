@@ -24,7 +24,7 @@ export default function CreateCar() {
     }
     // To get the next id
     useEffect(() => {
-        fetch('http://localhost:8000/cars')
+        fetch('https://json-server-api-q84y.onrender.com/cars')
             .then(response => response.json())
             .then(data => {
                 const maxId = data.reduce((max, car) => Math.max(max, car.id), 0);
@@ -45,7 +45,7 @@ export default function CreateCar() {
             model,
             type,
             available}
-        fetch('http://localhost:8000/cars', {
+        fetch('https://json-server-api-q84y.onrender.com/cars', {
             method:'POST',
             headers:{
                 'content-type':'application/json'

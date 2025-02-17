@@ -9,7 +9,7 @@ export default function CreateContract() {
             const [id, setId] = useState("")
         // Function
             useEffect(() => {
-                fetch('http://localhost:8000/contracts')
+                fetch('https://json-server-api-q84y.onrender.com/contracts')
                     .then(response => response.json())
                     .then(data => {
                         const maxId = data.reduce((max, contract) => Math.max(max, contract.id), 0);
@@ -39,7 +39,7 @@ export default function CreateContract() {
                 start_date,
                 end_date,
                 amount:parseFloat(amount).toFixed(2)}
-            fetch('http://localhost:8000/contracts', {
+            fetch('https://json-server-api-q84y.onrender.com/contracts', {
                 method:'POST',
                 headers:{
                     'content-type':'application/json'
@@ -56,7 +56,7 @@ export default function CreateContract() {
             const [cars, setCars] = useState([])
         // Function
             useEffect(()=>{
-                fetch('http://localhost:8000/cars')
+                fetch('https://json-server-api-q84y.onrender.com/cars')
                 .then(res=>res.json())
                 .then(data=>setCars(data))
                 .catch(err=>console.log(err))
@@ -66,7 +66,7 @@ export default function CreateContract() {
             const [clients, setClients] = useState([])
         // Function
             useEffect(()=>{
-        fetch('http://localhost:8000/clients')
+        fetch('https://json-server-api-q84y.onrender.com/clients')
         .then(res=>res.json())
         .then(data=>setClients(data))
         .catch(err=>console.log(err))

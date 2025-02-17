@@ -6,14 +6,14 @@ import { useNavigate } from "react-router-dom"
 export default function Contracts() {
     const [contracts, setContracts] = useState([])
     useEffect(()=>{
-        fetch('http://localhost:8000/contracts')
+        fetch('https://json-server-api-q84y.onrender.com/contracts')
         .then(res=>res.json())
         .then(data=>setContracts(data))
         .catch(err=>console.log(err.message))
     }, [])
     const deleteContract = (id) => {
         if(confirm('Are You Sure?')) {
-            fetch('http://localhost:8000/contracts/'+id,{
+            fetch('https://json-server-api-q84y.onrender.com/contracts/'+id,{
                 method:'delete'
             }).then(() => {
                 setContracts(contracts.filter((car)=>car.id !== id))

@@ -6,7 +6,7 @@ export default function EditCar() {
     const {carid} = useParams()
     // Get Data
     useEffect(() => {
-            fetch('http://localhost:8000/cars/' + carid)
+            fetch('https://json-server-api-q84y.onrender.com/cars/' + carid)
             .then(res => res.json())
                 .then(data => {
                     setImage(data.image);
@@ -54,7 +54,7 @@ export default function EditCar() {
             model:model.at(0).toUpperCase()+model.slice(1),
             type:type.at(0).toUpperCase()+type.slice(1),
             available}
-        fetch('http://localhost:8000/cars/'+carid, {
+        fetch('https://json-server-api-q84y.onrender.com/cars/'+carid, {
             method:'PUT',
             headers:{
                 'content-type':'application/json'

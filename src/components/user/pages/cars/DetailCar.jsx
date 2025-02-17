@@ -9,7 +9,7 @@ export default function DetailCar() {
     const [mainImage, setMainImage] = useState(car.image);
     
     useEffect(() => {
-        fetch('http://localhost:8000/cars/' + carid)
+        fetch('https://json-server-api-q84y.onrender.com/cars/' + carid)
         .then(res => res.json())
             .then(data => {
                 setCar(data);

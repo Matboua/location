@@ -6,14 +6,14 @@ import { useNavigate } from "react-router-dom"
 export default function Cars() {
     const [cars, setCars] = useState([])
     useEffect(()=>{
-        fetch('http://localhost:8000/cars')
+        fetch('https://json-server-api-q84y.onrender.com/cars')
         .then(res=>res.json())
         .then(data=>setCars(data))
         .catch(err=>console.log(err.message))
     }, [])
     const deleteCar = (id) => {
         if(confirm('Are You Sure?')) {
-            fetch('http://localhost:8000/cars/'+id,{
+            fetch('https://json-server-api-q84y.onrender.com/cars/'+id,{
                 method:'delete'
             }).then(() => {
                 setCars(cars.filter((car)=>car.id !== id))

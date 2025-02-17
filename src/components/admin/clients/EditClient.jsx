@@ -6,7 +6,7 @@ export default function EditClient() {
     const {clientid} = useParams()
     // Get Data
     useEffect(() => {
-        fetch('http://localhost:8000/clients/' + clientid)
+        fetch('https://json-server-api-q84y.onrender.com/clients/' + clientid)
         .then(res => res.json())
             .then(data => {
                 setFirst_name(data.first_name);
@@ -33,7 +33,7 @@ export default function EditClient() {
             phone,
             email:email.toLowerCase(),
             city}
-        fetch('http://localhost:8000/clients/'+clientid, {
+        fetch('https://json-server-api-q84y.onrender.com/clients/'+clientid, {
             method:'PUT',
             headers:{
                 'content-type':'application/json'

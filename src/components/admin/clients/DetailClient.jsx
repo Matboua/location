@@ -7,7 +7,7 @@ export default function DetailClient() {
     const {clientid} = useParams()
     const [client, setClient] = useState('')
     useEffect(() => {
-        fetch('http://localhost:8000/clients/' + clientid)
+        fetch('https://json-server-api-q84y.onrender.com/clients/' + clientid)
         .then(res => res.json())
             .then(data => {
                 setClient(data)
