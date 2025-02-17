@@ -13,7 +13,7 @@ export default function Footer() {
                     <div className="-mx-4 flex flex-wrap justify-between">
                         {/* First */}
                         <div className="px-4 my-5 w-full xl:w-1/4">
-                            <Link href="/" className="block w-56 mb-8 text-3xl">
+                            <Link to="/" className="block w-56 mb-8 text-3xl">
                                 <FontAwesomeIcon className="text-blue-600" icon={faCarOn}/> Cavoy
                             </Link>
                             <p className="text-justify">
@@ -26,10 +26,10 @@ export default function Footer() {
                             <h2 className="inline-block text-2xl pb-4 mb-4 border-b-4 border-blue-600">Our Pages</h2>
                             </div>
                             <ul className="leading-8">
-                            <li><Link href="/" className="hover:text-blue-400">Home Page</Link></li>
-                            <li><Link href="/cars" className="hover:text-blue-400">Cars & Vehicles</Link></li>
-                            <li><Link href="/articles" className="hover:text-blue-400">Articles Page</Link></li>
-                            <li><Link href="/admin/cars" className="hover:text-blue-400">Login Page</Link></li>
+                            <li><Link to="/" className="hover:text-blue-400">Home Page</Link></li>
+                            <li><Link to="/cars" className="hover:text-blue-400">Cars & Vehicles</Link></li>
+                            <li><Link to="/articles" className="hover:text-blue-400">Articles Page</Link></li>
+                            <li><Link to="/admin/cars" className="hover:text-blue-400">Login Page</Link></li>
                             </ul>
                         </div>
                         {/* Third */}
@@ -38,10 +38,10 @@ export default function Footer() {
                             <h2 className="inline-block text-2xl pb-4 mb-4 border-b-4 border-blue-600">Privacy Pages</h2>
                             </div>
                             <ul className="leading-8">
-                            <li><Link href="/privacy-policy" className="hover:text-blue-400">Privacy Policy</Link></li>
-                            <li><Link href="/terms-and-conditions" className="hover:text-blue-400">Terms &amp; Conditions</Link></li>
-                            <li><Link href="/about-us" className="hover:text-blue-400">About Us</Link></li>
-                            <li><Link href="/contact-us" className="hover:text-blue-400">Contact Us</Link></li>
+                            <li><Link to="/privacy-policy" className="hover:text-blue-400">Privacy Policy</Link></li>
+                            <li><Link to="/terms-and-conditions" className="hover:text-blue-400">Terms &amp; Conditions</Link></li>
+                            <li><Link to="/about-us" className="hover:text-blue-400">About Us</Link></li>
+                            <li><Link to="/contact-us" className="hover:text-blue-400">Contact Us</Link></li>
                             </ul>
                         </div>
                         {/* Fourth */}
