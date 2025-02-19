@@ -1,13 +1,13 @@
 import Slider from "../features/Slider";
-import Cars from "./cars/Cars";
+import CarsCarousel from "../features/CarsCarousel";
 
 export default function Home() {
-    
-    return(
-        <div className="flex flex-col gap-5">
-            <Slider />
-            <Cars />
-        </div>
-        
-    )
-};
+	return (
+		<div className="flex flex-col items-center gap-10 w-full">
+			<div className="flex flex-col items-center gap-10 w-10/12">
+				<Slider />
+				<CarsCarousel />
+			</div>
+		</div>
+	);
+}
