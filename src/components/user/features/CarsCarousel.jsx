@@ -5,6 +5,7 @@ import { useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import Titles from "./Titles";
 
 export default function CarsCarousel() {
 	const [cars, setCars] = useState([]);
@@ -21,10 +22,14 @@ export default function CarsCarousel() {
 	};
 
 	return (
-		<section className="bg-gray-200 dark:bg-gray-900 dark:text-gray-100 rounded-2xl py-3 slider-container w-full flex flex-col items-center">
-			<h1 className="text-center font-medium text-3xl my-3 mb-7 p-10 dark:text-gray-200 text-gray-900">
+		<section className="bg-gray-200 dark:bg-gray-900 rounded-2xl py-10 slider-container w-full flex flex-col items-center">
+			{/* <h1 className="text-center font-medium text-3xl my-3 mb-7 p-10 dark:text-gray-200 text-gray-900">
 				Explore Most Popular Cars
-			</h1>
+			</h1> */}
+			<Titles
+				title="Explore Most Popular Cars"
+				description="Discover our top-rated cars, perfect for your travels across Morocco. Choose comfort, reliability, and style with CarVoy"
+			/>
 			<Slider
 				className="flex text-center justify-center w-full pb-14"
 				{...settings}

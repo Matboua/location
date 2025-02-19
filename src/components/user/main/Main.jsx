@@ -6,7 +6,7 @@ import About from "../pages/About";
 import Contact from "../pages/Contact";
 import PrivacyPolicy from "../pages/PrivacyPolicy";
 import TermsConditions from "../pages/TermsConditions";
-import HowItsWork from "../features/HowItsWork";
+import WhyChooseUs from "../features/WhyChooseUs";
 export default function Main() {
 	return (
 		<main className="dark:text-gray-100 text-gray-900 dark:bg-gray-800 bg-gray-100 flex flex-col items-center flex-grow p-5">
@@ -19,7 +19,7 @@ export default function Main() {
 				<Route path="/contact-us" element={<Contact />} />
 				<Route path="/privacy-policy" element={<PrivacyPolicy />} />
 				<Route path="/terms-and-conditions" element={<TermsConditions />} />
-				<Route path="/x" element={<HowItsWork />} />
+				<Route path="/x" element={<WhyChooseUs />} />
 			</Routes>
 		</main>
 	);
