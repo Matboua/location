@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Slider() {
 	return (
-		<section className="bg-gray-200 dark:bg-gray-900 dark:text-gray-100 w-full rounded-2xl">
+		<section className="bg-[#e5e7eb90] dark:bg-gray-900 dark:text-gray-100 w-full rounded-2xl">
 			<div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
 				<div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
 					<h1 className="text-4xl font-bold leading-none sm:text-5xl">

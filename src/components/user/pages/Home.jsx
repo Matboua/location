@@ -1,6 +1,8 @@
 import Slider from "../features/Slider";
 import CarsCarousel from "../features/CarsCarousel";
 import HowItsWork from "../features/HowItsWork";
+import WhyChooseUs from "../features/WhyChooseUs";
+import FAQs from "../features/Faqs/Faqs";
 
 export default function Home() {
 	return (
@@ -9,6 +11,8 @@ export default function Home() {
 				<Slider />
 				<HowItsWork />
 				<CarsCarousel />
+				<WhyChooseUs />
+				<FAQs />
 			</div>
 		</div>
 	);
