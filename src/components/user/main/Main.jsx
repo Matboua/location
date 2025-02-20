@@ -6,8 +6,6 @@ import About from "../pages/About";
 import Contact from "../pages/Contact";
 import PrivacyPolicy from "../pages/PrivacyPolicy";
 import TermsConditions from "../pages/TermsConditions";
-import FAQs from "../features/Faqs/Faqs";
-import Question from "../features/faqs/َQuestion";
 export default function Main() {
 	return (
 		<main className="dark:text-gray-100 text-gray-900 dark:bg-gray-800 bg-gray-50 flex flex-col items-center flex-grow p-5">
@@ -20,8 +18,6 @@ export default function Main() {
 				<Route path="/contact-us" element={<Contact />} />
 				<Route path="/privacy-policy" element={<PrivacyPolicy />} />
 				<Route path="/terms-and-conditions" element={<TermsConditions />} />
-				<Route path="/x" element={<FAQs />} />
-				<Route path="/xx" element={<Question />} />
 			</Routes>
 		</main>
 	);

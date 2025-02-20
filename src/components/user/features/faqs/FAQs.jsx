@@ -1,5 +1,5 @@
 import Titles from "../Titles";
-import Question from "../faqs/َQuestion";
+import Question from "./Question";
 
 export default function FAQs() {
 	return (
