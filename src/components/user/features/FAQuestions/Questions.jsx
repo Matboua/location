@@ -1,7 +1,7 @@
 import Titles from "../Titles";
 import Question from "./Question";
 
-export default function FAQs() {
+export default function Questions() {
 	return (
 		<section className="pt-10 pb-25 w-full flex flex-col items-center gap-7 bg-[#e5e7eb90] dark:bg-gray-900 rounded-2xl">
 			<Titles

@@ -2,8 +2,7 @@ import Slider from "../features/Slider";
 import CarsCarousel from "../features/CarsCarousel";
 import HowItsWork from "../features/HowItsWork";
 import WhyChooseUs from "../features/WhyChooseUs";
-import FAQs from "../features/Faqs/Faqs";
-
+import Questions from "../features/FAQuestions/Questions";
 export default function Home() {
 	return (
 		<div className="flex flex-col items-center gap-10 w-full">
@@ -12,7 +11,7 @@ export default function Home() {
 				<HowItsWork />
 				<CarsCarousel />
 				<WhyChooseUs />
-				<FAQs />
+				<Questions />
 			</div>
 		</div>
 	);
