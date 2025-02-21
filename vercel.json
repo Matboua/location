@@ -1,0 +1,77 @@
+{
+	"routes": [
+		{
+			"src": "/",
+			"dest": "/"
+		},
+		{
+			"src": "/cars",
+			"dest": "/"
+		},
+		{
+			"src": "/articles",
+			"dest": "/"
+		},
+		{
+			"src": "/about-us",
+			"dest": "/"
+		},
+		{
+			"src": "/contact-us",
+			"dest": "/"
+		},
+		{
+			"src": "/privacy-policy",
+			"dest": "/"
+		},
+    ...
+		{
+			"src": "/terms-and-conditions",
+			"dest": "/"
+		},
+		{
+			"src": "/admin/cars",
+			"dest": "/"
+		},
+		{
+			"src": "/admin/cars/create",
+			"dest": "/"
+		},
+		{
+			"src": "/admin/cars/detail/:carid",
+			"dest": "/"
+		},
+		{
+			"src": "/admin/cars/edit/:carid",
+			"dest": "/"
+		},
+		{
+			"src": "/admin/clients",
+			"dest": "/"
+		},
+		{
+			"src": "/admin/clients/create",
+			"dest": "/"
+		},
+		{
+			"src": "/admin/clients/detail/:clientid",
+			"dest": "/"
+		},
+		{
+			"src": "/admin/clients/edit/:clientid",
+			"dest": "/"
+		},
+		{
+			"src": "/admin/contracts",
+			"dest": "/"
+		},
+		{
+			"src": "/admin/contracts/create",
+			"dest": "/"
+		},
+		{
+			"src": "/admin/contracts/edit/:contractid",
+			"dest": "/"
+		}
+	]
+}

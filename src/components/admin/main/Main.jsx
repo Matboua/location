@@ -13,7 +13,6 @@ import EditClient from "../clients/EditClient";
 import Contracts from "../contracts/Contracts";
 import CreateContract from "../contracts/CreateContract";
 import EditContract from "../contracts/EditContract";
-import Pagination from "../pagination/Pagination";
 // Function
 export default function Main() {
 	return (
@@ -33,7 +32,6 @@ export default function Main() {
 				<Route path="contracts" element={<Contracts />} />
 				<Route path="contracts/create" element={<CreateContract />} />
 				<Route path="contracts/edit/:contractid" element={<EditContract />} />
-				<Route path="x" element={<Pagination />} />
 			</Routes>
 		</main>
 	);
