@@ -24,7 +24,6 @@
 			"src": "/privacy-policy",
 			"dest": "/"
 		},
-    ...
 		{
 			"src": "/terms-and-conditions",
 			"dest": "/"
