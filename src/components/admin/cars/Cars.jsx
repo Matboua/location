@@ -11,7 +11,7 @@ import Pagination from "../pagination/Pagination";
 export default function Cars() {
 	// Start Pagination
 	const [currentPage, setCurrentPage] = useState(1);
-	const recordsPerPage = 6;
+	const recordsPerPage = 8;
 	const [cars, setCars] = useState([]);
 	const lastIndex = currentPage * recordsPerPage;
 	const firstIndex = lastIndex - recordsPerPage;

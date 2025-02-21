@@ -2,17 +2,17 @@ import { Link } from "react-router-dom";
 
 export default function Pagination({ currentPage, npage, handlePageChange }) {
 	return (
-		<div className="col-span-12 mx-auto mt-8 grid grid-cols-4 grid-rows-2 items-center gap-3 px-4 py-4 pb-8 sm:flex sm:justify-center">
-			<div className="wt-button-font order-2 col-span-2 flex justify-end gap-2">
+		<div className="col-span-12 mx-auto mt-8 grid grid-cols-4 grid-rows-2 items-center gap-3 px-4 py-4 pb-8 sm:flex sm:justify-center dark:text-white text-gray-700">
+			<div className="wt-button-font order-2 col-span-2 flex justify-end gap-2 ">
 				<Link
-					className="rounded-lg flex items-center gap-2 px-3 py-1 transition duration-150 ease-in-out bg-gray-700 hover:bg-gray-900 text-white"
+					className="border dark:border-gray-700 border-gray-400 rounded-lg flex items-center gap-2 px-3 py-1 transition duration-150 ease-in-out dark:bg-gray-700 bg-white dark:hover:bg-gray-900 hover:bg-gray-100"
 					to="#"
 					onClick={currentPage === 1 ? null : () => handlePageChange(1)}
 				>
 					First
 				</Link>
 				<Link
-					className="rounded-lg flex items-center gap-2 px-3 py-1 transition duration-150 ease-in-out bg-gray-700 hover:bg-gray-900 text-white"
+					className="border dark:border-gray-700 border-gray-400 rounded-lg flex items-center gap-2 px-3 py-1 transition duration-150 ease-in-out dark:bg-gray-700 bg-white dark:hover:bg-gray-900 hover:bg-gray-100"
 					to="#"
 					onClick={
 						currentPage === 1 ? null : () => handlePageChange(currentPage - 1)
@@ -42,8 +42,8 @@ export default function Pagination({ currentPage, npage, handlePageChange }) {
 				{[...Array(npage)].map((_, index) => (
 					<Link
 						key={index + 1}
-						className={`rounded-lg flex items-center gap-2 px-3 py-1 transition duration-150 ease-in-out bg-gray-700 hover:bg-gray-900 text-white ${
-							currentPage === index + 1 ? "bg-gray-900" : ""
+						className={`border dark:border-gray-700 border-gray-400 rounded-lg flex items-center gap-2 px-3 py-1 transition duration-150 ease-in-out dark:bg-gray-700 bg-white dark:hover:bg-gray-900 hover:bg-gray-100  ${
+							currentPage === index + 1 ? "bg-yellow-200 dark:bg-gray-900" : ""
 						}`}
 						to="#"
 						onClick={() => handlePageChange(index + 1)}
@@ -54,7 +54,7 @@ export default function Pagination({ currentPage, npage, handlePageChange }) {
 			</div>
 			<div className="wt-button-font order-2 col-span-2 flex items-center gap-2">
 				<Link
-					className="rounded-lg flex items-center gap-2 px-3 py-1 transition duration-150 ease-in-out bg-gray-700 hover:bg-gray-900 text-white"
+					className="border dark:border-gray-700 border-gray-400 rounded-lg flex items-center gap-2 px-3 py-1 transition duration-150 ease-in-out dark:bg-gray-700 bg-white dark:hover:bg-gray-900 hover:bg-gray-100"
 					to="#"
 					onClick={
 						currentPage === npage
@@ -81,7 +81,7 @@ export default function Pagination({ currentPage, npage, handlePageChange }) {
 					</svg>
 				</Link>
 				<Link
-					className="rounded-lg flex items-center gap-2 px-3 py-1 transition duration-150 ease-in-out bg-gray-700 hover:bg-gray-900 text-white"
+					className="border dark:border-gray-700 border-gray-400 rounded-lg flex items-center gap-2 px-3 py-1 transition duration-150 ease-in-out dark:bg-gray-700 bg-white dark:hover:bg-gray-900 hover:bg-gray-100 "
 					to="#"
 					onClick={currentPage === npage ? null : () => handlePageChange(npage)}
 				>
