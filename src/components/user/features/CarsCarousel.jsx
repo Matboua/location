@@ -22,7 +22,7 @@ export default function CarsCarousel() {
 	};
 
 	return (
-		<section className="bg-[#e5e7eb90] dark:bg-gray-900 rounded-2xl py-10 slider-container w-full flex flex-col items-center">
+		<section className="bg-gray-1-90 dark:bg-gray-900 rounded-2xl py-10 slider-container w-full flex flex-col items-center">
 			<Titles
 				title="Explore Most Popular Cars"
 				description="Discover our top-rated cars, perfect for your travels across Morocco. Choose comfort, reliability, and style with CarVoy"
@@ -37,7 +37,7 @@ export default function CarsCarousel() {
 							item.available && (
 								<div
 									key={key}
-									className="relative flex max-w-[280px] flex-col overflow-hidden rounded-lg dark:border-gray-800 dark:border-2 dark:bg-gray-900 bg-white shadow-md"
+									className="relative flex max-w-[280px] flex-col overflow-hidden rounded-lg dark:border-gray-800 dark:border-2 dark:bg-gray-2-50 bg-white shadow-md"
 								>
 									<a
 										className="relative mx-3 mt-3 flex h-48 overflow-hidden rounded-xl"

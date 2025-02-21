@@ -11,3 +11,9 @@
 .slick-prev:before {
 	margin-left: -12px;
 }
+
+@theme {
+	--color-gray-1-90: #e5e7eb90;
+	--color-gray-2-50: #03071250;
+	--color-gray-2-60: #03071260;
+}

@@ -15,7 +15,7 @@ export default function WhyChooseUs() {
 			/>
 			<div>
 				<div className="grid gap-3 grid-cols-1 lg:grid-cols-3 overflow-hidden">
-					<div className="flex flex-col gap-3 items-center p-5 dark:bg-gray-900 bg-white hover:bg-gray-900 hover:dark:bg-gray-100 hover:text-gray-100 hover:dark:text-gray-950 transition-all duration-300 group rounded-2xl">
+					<div className="flex flex-col gap-3 items-center p-5 bg-white hover:bg-gray-900 hover:text-gray-100 hover:dark:bg-gray-100 dark:bg-gray-900 hover:dark:text-gray-950 transition-all duration-300 group rounded-2xl">
 						<FontAwesomeIcon
 							icon={faObjectGroup}
 							size="2x"

@@ -7,7 +7,7 @@ export default function Question({ title, description }) {
 			<input type="checkbox" id={title} className="peer hidden" />
 			<label
 				htmlFor={title}
-				className="flex items-center justify-between p-4 dark:bg-[#03071230] bg-gray-50 cursor-pointer hover:bg-blue-100 dark:hover:bg-[#03071250] dark:peer-checked:bg-[#03071260] transition-colors peer-checked:bg-blue-100"
+				className="flex items-center justify-between p-4 dark:bg-[#03071230] bg-gray-50 cursor-pointer hover:bg-blue-100 dark:hover:bg-gray-2-50 dark:peer-checked:bg-gray-3-60 transition-colors peer-checked:bg-blue-100"
 			>
 				<span className="text-lg font-semibold">{title}</span>
 				<FontAwesomeIcon
