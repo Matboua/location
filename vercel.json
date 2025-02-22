@@ -29,7 +29,7 @@
 			"dest": "/"
 		},
 		{
-			"src": "/detailcontract/[^/]+",
+			"src": "/detailcontract/([0-9]+)",
 			"dest": "/"
 		},
 		{
@@ -41,11 +41,11 @@
 			"dest": "/"
 		},
 		{
-			"src": "/admin/cars/detail/[^/]+",
+			"src": "/admin/cars/detail/([0-9]+)",
 			"dest": "/"
 		},
 		{
-			"src": "/admin/cars/edit/[^/]+",
+			"src": "/admin/cars/edit/([0-9]+)",
 			"dest": "/"
 		},
 		{
@@ -57,11 +57,11 @@
 			"dest": "/"
 		},
 		{
-			"src": "/admin/clients/detail/[^/]+",
+			"src": "/admin/clients/detail/([0-9]+)",
 			"dest": "/"
 		},
 		{
-			"src": "/admin/clients/edit/[^/]+",
+			"src": "/admin/clients/edit/([0-9]+)",
 			"dest": "/"
 		},
 		{
@@ -73,7 +73,7 @@
 			"dest": "/"
 		},
 		{
-			"src": "/admin/contracts/edit/[^/]+",
+			"src": "/admin/contracts/edit/([0-9]+)",
 			"dest": "/"
 		}
 	]
