@@ -8,7 +8,7 @@ import { faSquarespace } from "@fortawesome/free-brands-svg-icons";
 
 export default function WhyChooseUs() {
 	return (
-		<section className="pb-10 w-full flex flex-col items-center gap-7">
+		<section className="pb-18 w-full flex flex-col items-center gap-7">
 			<Titles
 				title="Why Choose Us"
 				description="CarVoy: Your top choice for exceptional service, convenience, and reliability"

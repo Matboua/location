@@ -10,10 +10,12 @@ export default function About() {
 					About Us
 				</h1>
 				<AboutHero />
-				<div className="bg-gray-1-90 dark:bg-gray-900 rounded-2xl">
+				<div className="bg-gray-1-90 dark:bg-gray-900 rounded-2xl py-10">
 					<HowItsWork />
 				</div>
-				<WhyChooseUs />
+				<div className="py-10">
+					<WhyChooseUs />
+				</div>
 				<Questions />
 			</div>
 		</section>

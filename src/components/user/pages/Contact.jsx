@@ -1,8 +1,13 @@
+import ContactCards from "../features/contactus/ContactCards";
+import ContactForm from "../features/contactus/ContactForm";
+
 export default function Contact() {
-    
-    return(
-        <div className=" px-5 pb-5 rounded-2xl">
-            <h1 className="text-center font-medium text-3xl my-3 mb-7 p-10 dark:text-gray-200 text-gray-900">Contact Us</h1>
-        </div>
-    )
-};
+	return (
+		<section className="flex flex-col items-center gap-10 w-full">
+			<div className="flex flex-col items-center gap-10 w-10/12">
+				<ContactCards />
+				<ContactForm />
+			</div>
+		</section>
+	);
+}

@@ -1,3 +1,4 @@
+import SliderCar from "@assets/slider-car.png";
 import { Link } from "react-router-dom";
 
 export default function Slider() {
@@ -35,7 +36,7 @@ export default function Slider() {
 				</div>
 				<div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-64 sm:h-72 lg:h-80 xl:h-96 2xl:h-112">
 					<img
-						src="/slider-car.png"
+						src={SliderCar}
 						alt="Slider Car"
 						className="dark:opacity-90 object-contain h-64 sm:h-72 lg:h-80 xl:h-96 2xl:h-112"
 					/>

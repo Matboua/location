@@ -1,3 +1,4 @@
+import SliderCarAbout from "@assets/slider-car-about.png";
 export default function AboutHero() {
 	return (
 		<section className=" dark:text-gray-100 w-full rounded-2xl">
@@ -5,7 +6,7 @@ export default function AboutHero() {
 				<div className="relative flex items-center justify-center py-6 mt-8 lg:mt-0 w-5/10">
 					<span className="absolute -left-10 rounded-2xl w-5/10 h-full bg-orange-400"></span>
 					<img
-						src="/slider-car-about.png"
+						src={SliderCarAbout}
 						alt="Slider Car"
 						className="z-10 rounded-xl object-contain h-64 sm:h-72 lg:h-80 xl:h-96"
 					/>
