@@ -29,6 +29,10 @@
 			"dest": "/"
 		},
 		{
+			"src": "/DetailContract/contractid",
+			"dest": "/"
+		},
+		{
 			"src": "/admin/cars",
 			"dest": "/"
 		},
