@@ -29,7 +29,7 @@
 			"dest": "/"
 		},
 		{
-			"src": "/DetailContract/contractid",
+			"src": "/DetailContract/:contractid",
 			"dest": "/"
 		},
 		{
