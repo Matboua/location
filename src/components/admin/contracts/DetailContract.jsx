@@ -6,43 +6,28 @@ import {
 	PDFViewer,
 	Image,
 } from "@react-pdf/renderer";
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Sign from "@assets/sign.png";
 import stamp from "@assets/stamp.png";
 import stamp2 from "@assets/stamp2.png";
+import { useSelector } from "react-redux";
 
 export default function DetailContract() {
+	// Get Contract Id
 	const { contractid } = useParams();
-	const [contract, setContract] = useState();
-	const [client, setClient] = useState();
-	const [car, setCar] = useState();
-
-	useEffect(() => {
-		fetch(`https://json-server-api-q84y.onrender.com/contracts/${contractid}`)
-			.then((res) => res.json())
-			.then((data) => setContract(data))
-			.catch((err) => console.log(err.message));
-	}, [contractid]);
-	useEffect(() => {
-		if (contract) {
-			fetch(
-				`https://json-server-api-q84y.onrender.com/clients/${contract.client_id}`
-			)
-				.then((res) => res.json())
-				.then((data) => setClient(data))
-				.catch((err) => console.log(err.message));
-		}
-	}, [contract]);
-	useEffect(() => {
-		if (contract) {
-			fetch(`https://json-server-api-q84y.onrender.com/cars/${contract.car_id}`)
-				.then((res) => res.json())
-				.then((data) => setCar(data))
-				.catch((err) => console.log(err.message));
-		}
-	}, [contract]);
-
+	// Get Contract
+	const contract = useSelector((state) =>
+		state.contracts.find((contract) => contract.id == contractid)
+	);
+	// Get Client
+	const client = useSelector((state) =>
+		state.clients.find((client) => client.id == contract.client_id)
+	);
+	// Get Car
+	const car = useSelector((state) =>
+		state.cars.find((car) => car.id == contract.car_id)
+	);
+	// Start Pdf
 	const ContractPDF = () => (
 		<Document>
 			<Page

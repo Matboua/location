@@ -4,15 +4,16 @@ import {
 	faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Pagination from "../pagination/Pagination";
+import { useSelector } from "react-redux";
 
 export default function CLients() {
 	// Start Pagination
 	const [currentPage, setCurrentPage] = useState(1);
 	const recordsPerPage = 6;
-	const [clients, setClients] = useState([]);
+	const clients = useSelector((state) => state.clients);
 	const lastIndex = currentPage * recordsPerPage;
 	const firstIndex = lastIndex - recordsPerPage;
 	const records = clients.slice(firstIndex, lastIndex);
@@ -22,23 +23,17 @@ export default function CLients() {
 	};
 	// End Pagination
 
-	useEffect(() => {
-		fetch("https://json-server-api-q84y.onrender.com/clients")
-			.then((res) => res.json())
-			.then((data) => setClients(data))
-			.catch((err) => console.log(err.message));
-	}, []);
-	const deleteClient = (id) => {
-		if (confirm("Are You Sure?")) {
-			fetch("https://json-server-api-q84y.onrender.com/clients/" + id, {
-				method: "delete",
-			})
-				.then(() => {
-					setClients(clients.filter((car) => car.id !== id));
-				})
-				.catch((err) => console.log(err));
-		}
-	};
+	// const deleteClient = (id) => {
+	// 	if (confirm("Are You Sure?")) {
+	// 		fetch("https://json-server-api-q84y.onrender.com/clients/" + id, {
+	// 			method: "delete",
+	// 		})
+	// 			.then(() => {
+	// 				setClients(clients.filter((car) => car.id !== id));
+	// 			})
+	// 			.catch((err) => console.log(err));
+	// 	}
+	// };
 	const navigate = useNavigate();
 	const detailClient = (id) => {
 		navigate("/admin/clients/detail/" + id);
@@ -105,9 +100,9 @@ export default function CLients() {
 										<FontAwesomeIcon icon={faEdit} size="lg" />
 									</button>
 									<button
-										onClick={() => {
-											deleteClient(item.id);
-										}}
+										// onClick={() => {
+										// 	deleteClient(item.id);
+										// }}
 										className="py-1.5 px-4 text-red-500 bg-red-100 dark:bg-red-700 dark:text-red-100 hover:bg-red-200 dark:hover:bg-red-600 rounded-full cursor-pointer transition duration-300 ease-in-out"
 									>
 										<FontAwesomeIcon icon={faTrash} size="lg" />

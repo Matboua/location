@@ -1,14 +1,15 @@
 import { faEdit, faFilePdf, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Pagination from "../pagination/Pagination";
+import { useSelector } from "react-redux";
 
 export default function Contracts() {
 	// Start Pagination
 	const [currentPage, setCurrentPage] = useState(1);
 	const recordsPerPage = 6;
-	const [contracts, setContracts] = useState([]);
+	const contracts = useSelector((state) => state.contracts);
 	const lastIndex = currentPage * recordsPerPage;
 	const firstIndex = lastIndex - recordsPerPage;
 	const records = contracts.slice(firstIndex, lastIndex);
@@ -17,23 +18,18 @@ export default function Contracts() {
 		setCurrentPage(pageNumber);
 	};
 	// End Pagination
-	useEffect(() => {
-		fetch("https://json-server-api-q84y.onrender.com/contracts")
-			.then((res) => res.json())
-			.then((data) => setContracts(data))
-			.catch((err) => console.log(err.message));
-	}, []);
-	const deleteContract = (id) => {
-		if (confirm("Are You Sure?")) {
-			fetch("https://json-server-api-q84y.onrender.com/contracts/" + id, {
-				method: "delete",
-			})
-				.then(() => {
-					setContracts(contracts.filter((car) => car.id !== id));
-				})
-				.catch((err) => console.log(err));
-		}
-	};
+
+	// const deleteContract = (id) => {
+	// 	if (confirm("Are You Sure?")) {
+	// 		fetch("https://json-server-api-q84y.onrender.com/contracts/" + id, {
+	// 			method: "delete",
+	// 		})
+	// 			.then(() => {
+	// 				setContracts(contracts.filter((car) => car.id !== id));
+	// 			})
+	// 			.catch((err) => console.log(err));
+	// 	}
+	// };
 	const navigate = useNavigate();
 	const detailContract = (id) => {
 		window.open("/DetailContract/" + id, "_blank");
@@ -111,9 +107,9 @@ export default function Contracts() {
 										<FontAwesomeIcon icon={faEdit} size="lg" />
 									</button>
 									<button
-										onClick={() => {
-											deleteContract(item.id);
-										}}
+										// onClick={() => {
+										// 	deleteContract(item.id);
+										// }}
 										className="py-1.5 px-4 text-red-500 bg-red-100 dark:bg-red-700 dark:text-red-100 hover:bg-red-200 dark:hover:bg-red-600 rounded-full cursor-pointer transition duration-300 ease-in-out"
 									>
 										<FontAwesomeIcon icon={faTrash} size="lg" />

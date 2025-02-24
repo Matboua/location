@@ -4,17 +4,18 @@ import {
 	faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Pagination from "../pagination/Pagination";
+import { useSelector } from "react-redux";
 
 export default function Cars() {
 	// Start Pagination
 	const [currentPage, setCurrentPage] = useState(1);
 	const recordsPerPage = 8;
-	const [cars, setCars] = useState([]);
 	const lastIndex = currentPage * recordsPerPage;
 	const firstIndex = lastIndex - recordsPerPage;
+	const cars = useSelector((state) => state.cars);
 	const records = cars.slice(firstIndex, lastIndex);
 	const npage = Math.ceil(cars.length / recordsPerPage);
 	const handlePageChange = (pageNumber) => {
@@ -22,24 +23,17 @@ export default function Cars() {
 	};
 	// End Pagination
 
-	useEffect(() => {
-		fetch("https://json-server-api-q84y.onrender.com/cars")
-			.then((res) => res.json())
-			.then((data) => setCars(data))
-			.catch((err) => console.log(err.message));
-	}, []);
-
-	const deleteCar = (id) => {
-		if (confirm("Are You Sure?")) {
-			fetch("https://json-server-api-q84y.onrender.com/cars/" + id, {
-				method: "delete",
-			})
-				.then(() => {
-					setCars(cars.filter((car) => car.id !== id));
-				})
-				.catch((err) => console.log(err));
-		}
-	};
+	// const deleteCar = (id) => {
+	// 	if (confirm("Are You Sure?")) {
+	// 		fetch("https://json-server-api-q84y.onrender.com/cars/" + id, {
+	// 			method: "delete",
+	// 		})
+	// 			.then(() => {
+	// 				setCars(cars.filter((car) => car.id !== id));
+	// 			})
+	// 			.catch((err) => console.log(err));
+	// 	}
+	// };
 
 	const navigate = useNavigate();
 	const detailCar = (id) => {
@@ -146,9 +140,9 @@ export default function Cars() {
 										<FontAwesomeIcon icon={faEdit} size="lg" />
 									</button>
 									<button
-										onClick={() => {
-											deleteCar(item.id);
-										}}
+										// onClick={() => {
+										// 	deleteCar(item.id);
+										// }}
 										className="py-1.5 px-4 text-red-500 bg-red-100 dark:bg-red-700 dark:text-red-100 hover:bg-red-200 dark:hover:bg-red-600 rounded-full cursor-pointer transition duration-300 ease-in-out"
 									>
 										<FontAwesomeIcon icon={faTrash} size="lg" />
