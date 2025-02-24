@@ -12,7 +12,7 @@ import { useSelector } from "react-redux";
 export default function Cars() {
 	// Start Pagination
 	const [currentPage, setCurrentPage] = useState(1);
-	const recordsPerPage = 8;
+	const recordsPerPage = 5;
 	const lastIndex = currentPage * recordsPerPage;
 	const firstIndex = lastIndex - recordsPerPage;
 	const cars = useSelector((state) => state.cars);

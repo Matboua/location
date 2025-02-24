@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 export default function Contracts() {
 	// Start Pagination
 	const [currentPage, setCurrentPage] = useState(1);
-	const recordsPerPage = 6;
+	const recordsPerPage = 5;
 	const contracts = useSelector((state) => state.contracts);
 	const lastIndex = currentPage * recordsPerPage;
 	const firstIndex = lastIndex - recordsPerPage;
