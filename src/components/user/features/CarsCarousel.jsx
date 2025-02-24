@@ -1,18 +1,13 @@
 import { faCar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import axios from "axios";
-import { useState } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import Titles from "./Titles";
+import { useSelector } from "react-redux";
 
 export default function CarsCarousel() {
-	const [cars, setCars] = useState([]);
-	axios
-		.get("https://json-server-api-q84y.onrender.com/cars")
-		.then((res) => setCars(res.data));
-
+	const cars = useSelector((state) => state.cars);
 	const settings = {
 		dots: false,
 		infinite: true,

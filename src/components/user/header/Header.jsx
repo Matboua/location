@@ -1,9 +1,4 @@
-import {
-	faCarOn,
-	faCartPlus,
-	faMoon,
-	faSun,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCarOn, faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
@@ -54,11 +49,6 @@ export default function Header() {
 					</li>
 				</ul>
 				<div>
-					<FontAwesomeIcon
-						icon={faCartPlus}
-						size="xl"
-						className="cursor-pointer"
-					/>
 					{/* Dark Mode Button */}
 					<button
 						className=" w-10 h-10 py-2 px-3 ml-3 cursor-pointer rounded-xl dark:bg-gray-800 hover:dark:bg-gray-700 text-blue-600 bg-blue-100 hover:bg-blue-200 font-medium"
