@@ -7,7 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Pagination from "../pagination/Pagination";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteClient } from "../../redux/clients/clientsReducer";
 
 export default function CLients() {
 	// Start Pagination
@@ -22,22 +23,18 @@ export default function CLients() {
 		setCurrentPage(pageNumber);
 	};
 	// End Pagination
-
-	// const deleteClient = (id) => {
-	// 	if (confirm("Are You Sure?")) {
-	// 		fetch("https://json-server-api-q84y.onrender.com/clients/" + id, {
-	// 			method: "delete",
-	// 		})
-	// 			.then(() => {
-	// 				setClients(clients.filter((car) => car.id !== id));
-	// 			})
-	// 			.catch((err) => console.log(err));
-	// 	}
-	// };
+	// navigate + dispatch
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	// Delete Client (handleDelete)
+	const handleDelete = (id) => {
+		dispatch(deleteClient({ id: id }));
+	};
+	// Navigate To Client Detail
 	const detailClient = (id) => {
 		navigate("/admin/clients/detail/" + id);
 	};
+	// Navigate To Edit Client
 	const editClient = (id) => {
 		navigate("/admin/clients/edit/" + id);
 	};
@@ -100,9 +97,9 @@ export default function CLients() {
 										<FontAwesomeIcon icon={faEdit} size="lg" />
 									</button>
 									<button
-										// onClick={() => {
-										// 	deleteClient(item.id);
-										// }}
+										onClick={() => {
+											handleDelete(item.id);
+										}}
 										className="py-1.5 px-4 text-red-500 bg-red-100 dark:bg-red-700 dark:text-red-100 hover:bg-red-200 dark:hover:bg-red-600 rounded-full cursor-pointer transition duration-300 ease-in-out"
 									>
 										<FontAwesomeIcon icon={faTrash} size="lg" />

@@ -25,9 +25,7 @@ export default function CreateCar() {
 	};
 	// Get Next Id
 	const cars = useSelector((state) => state.cars);
-	const nextId = (
-		cars.reduce((max, car) => Math.max(max, car.id), 0) + 1
-	).toString();
+	const nextId = cars.reduce((max, car) => Math.max(max, car.id), 0) + 1;
 	// POST New Car (handleSubmit)
 	const handleSubmit = (e) => {
 		e.preventDefault();

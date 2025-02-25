@@ -7,7 +7,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Pagination from "../pagination/Pagination";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteCar } from "../../redux/cars/carsReducer";
 
 export default function Cars() {
 	// Start Pagination
@@ -22,44 +23,21 @@ export default function Cars() {
 		setCurrentPage(pageNumber);
 	};
 	// End Pagination
-
-	// const deleteCar = (id) => {
-	// 	if (confirm("Are You Sure?")) {
-	// 		fetch("https://json-server-api-q84y.onrender.com/cars/" + id, {
-	// 			method: "delete",
-	// 		})
-	// 			.then(() => {
-	// 				setCars(cars.filter((car) => car.id !== id));
-	// 			})
-	// 			.catch((err) => console.log(err));
-	// 	}
-	// };
-
+	// navigate + dispatch
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	// Delete Car (handleDelete)
+	const handleDelete = (id) => {
+		dispatch(deleteCar({ id: id }));
+	};
+	// Navigate To Car Detail
 	const detailCar = (id) => {
 		navigate("/admin/cars/detail/" + id);
 	};
+	// Navigate To Edit Car
 	const editCar = (id) => {
 		navigate("/admin/cars/edit/" + id);
 	};
-
-	const availableStyle = {
-		display: "flex",
-		color: "00ff00",
-		background: "#00ff0025",
-		padding: "5px",
-		borderRadius: "5px",
-		justifyContent: "center",
-	};
-	const unavailableStyle = {
-		display: "flex",
-		color: "ff3333",
-		background: "#ff000055",
-		padding: "5px",
-		borderRadius: "5px",
-		justifyContent: "center",
-	};
-
 	return (
 		<div className="relative flex flex-col min-h-[75vh] justify-between w-full overflow-x-auto shadow-md sm:rounded-lg">
 			<table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 border border-gray-300 dark:border-gray-700">
@@ -117,7 +95,11 @@ export default function Cars() {
 								<td className="px-6 py-4">{item.type}</td>
 								<td className="px-6 py-4">
 									<span
-										style={item.available ? availableStyle : unavailableStyle}
+										className={` flex p-2 rounded-md justify-center ${
+											item.available
+												? "text-green-500 bg-green-600/25"
+												: "text-red-500 bg-red-600/25"
+										}`}
 									>
 										{item.available ? "Available" : "Unavailable"}
 									</span>
@@ -140,9 +122,9 @@ export default function Cars() {
 										<FontAwesomeIcon icon={faEdit} size="lg" />
 									</button>
 									<button
-										// onClick={() => {
-										// 	deleteCar(item.id);
-										// }}
+										onClick={() => {
+											handleDelete(item.id);
+										}}
 										className="py-1.5 px-4 text-red-500 bg-red-100 dark:bg-red-700 dark:text-red-100 hover:bg-red-200 dark:hover:bg-red-600 rounded-full cursor-pointer transition duration-300 ease-in-out"
 									>
 										<FontAwesomeIcon icon={faTrash} size="lg" />

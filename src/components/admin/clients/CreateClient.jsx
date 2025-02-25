@@ -12,9 +12,8 @@ export default function CreateClient() {
 	const navigate = useNavigate();
 	// Get Next Id
 	const clients = useSelector((state) => state.clients);
-	const nextId = (
-		clients.reduce((max, client) => Math.max(max, client.id), 0) + 1
-	).toString();
+	const nextId =
+		clients.reduce((max, client) => Math.max(max, client.id), 0) + 1;
 	// Post New Client
 	const handleSubmit = (e) => {
 		e.preventDefault();

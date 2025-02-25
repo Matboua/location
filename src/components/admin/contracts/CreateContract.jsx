@@ -6,9 +6,8 @@ import { useNavigate } from "react-router-dom";
 export default function CreateContract() {
 	// Get Next Id
 	const contracts = useSelector((state) => state.contracts);
-	const nextId = (
-		contracts.reduce((max, contract) => Math.max(max, contract.id), 0) + 1
-	).toString();
+	const nextId =
+		contracts.reduce((max, contract) => Math.max(max, contract.id), 0) + 1;
 
 	// To POST contract on submit
 	// useState
