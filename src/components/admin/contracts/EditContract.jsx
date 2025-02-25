@@ -1,7 +1,8 @@
 import { differenceInDays } from "date-fns";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+import { editContract } from "../../redux/contracts/contractsReducer";
 
 export default function EditContract() {
 	// Get Id
@@ -18,7 +19,9 @@ export default function EditContract() {
 	const [start_date, setStart_date] = useState(contract.start_date);
 	const [end_date, setEnd_date] = useState(contract.end_date);
 	const [amount, setAmount] = useState(contract.amount);
+	// Navigate + Dispatch
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 	// PUT Contract (handleSubmit)
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -32,17 +35,8 @@ export default function EditContract() {
 			end_date,
 			amount: parseFloat(amount).toFixed(2),
 		};
-		fetch("https://json-server-api-q84y.onrender.com/contracts/" + contractid, {
-			method: "PUT",
-			headers: {
-				"content-type": "application/json",
-			},
-			body: JSON.stringify(contractData),
-		})
-			.then(() => {
-				navigate("/admin/contracts");
-			})
-			.catch((err) => console.log(err.message));
+		dispatch(editContract(contractData));
+		navigate("/admin/contracts");
 	};
 	// Get cars
 	const cars = useSelector((state) => state.cars);

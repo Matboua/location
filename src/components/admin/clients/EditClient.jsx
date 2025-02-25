@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+import { editClient } from "../../redux/clients/clientsReducer";
 
 export default function EditClient() {
 	// Get Id
@@ -15,7 +16,9 @@ export default function EditClient() {
 	const [phone, setPhone] = useState(client.phone);
 	const [email, setEmail] = useState(client.email);
 	const [city, setCity] = useState(client.city);
+	// Navigate + Dispatch
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 	// PUT Client (handleSubmit)
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -27,17 +30,8 @@ export default function EditClient() {
 			email: email.toLowerCase(),
 			city,
 		};
-		fetch("https://json-server-api-q84y.onrender.com/clients/" + clientid, {
-			method: "PUT",
-			headers: {
-				"content-type": "application/json",
-			},
-			body: JSON.stringify(clientData),
-		})
-			.then(() => {
-				navigate("/admin/clients");
-			})
-			.catch((err) => console.log(err.message));
+		dispatch(editClient(clientData));
+		navigate("/admin/clients");
 	};
 	return (
 		<form className="w-full" onSubmit={handleSubmit}>
