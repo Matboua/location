@@ -2,9 +2,9 @@ import { faEdit, faFilePdf, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Pagination from "../pagination/Pagination";
+import Pagination from "../../pagination/Pagination";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteContract } from "../../redux/contracts/contractsReducer";
+import { deleteContract } from "@redux/contracts/contractsReducer";
 
 export default function Contracts() {
 	// Start Pagination

@@ -1,17 +1,30 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCar } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
+import Pagination from "../../../admin/pagination/Pagination";
+import { useState } from "react";
 
 export default function Main() {
+	// Start Pagination
+	const [currentPage, setCurrentPage] = useState(1);
+	const recordsPerPage = 8;
+	const lastIndex = currentPage * recordsPerPage;
+	const firstIndex = lastIndex - recordsPerPage;
 	const cars = useSelector((state) => state.cars);
+	const records = cars.slice(firstIndex, lastIndex + 1);
+	const npage = Math.ceil(cars.length / recordsPerPage);
+	const handlePageChange = (pageNumber) => {
+		setCurrentPage(pageNumber);
+	};
+	// End Pagination
 	return (
 		<div className=" px-5 pb-5 rounded-2xl">
 			<h1 className="text-center font-medium text-3xl my-3 mb-7 p-10 dark:text-gray-200 text-gray-900">
 				Cars & Vehicles
 			</h1>
 			<div className="grid gap-5 grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 justify-items-center">
-				{cars &&
-					cars.map(
+				{records &&
+					records.map(
 						(item, key) =>
 							item.available && (
 								<div
@@ -87,6 +100,11 @@ export default function Main() {
 							)
 					)}
 			</div>
+			<Pagination
+				currentPage={currentPage}
+				npage={npage}
+				handlePageChange={handlePageChange}
+			/>
 		</div>
 	);
 }

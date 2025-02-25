@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { editCar } from "../../redux/cars/carsReducer";
+import { editCar } from "@redux/cars/carsReducer";
 
 export default function EditCar() {
 	// Get Id

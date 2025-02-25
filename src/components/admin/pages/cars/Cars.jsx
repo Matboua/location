@@ -6,19 +6,19 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Pagination from "../pagination/Pagination";
+import Pagination from "../../pagination/Pagination";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteClient } from "../../redux/clients/clientsReducer";
+import { deleteCar } from "@redux/cars/carsReducer";
 
-export default function CLients() {
+export default function Cars() {
 	// Start Pagination
 	const [currentPage, setCurrentPage] = useState(1);
-	const recordsPerPage = 6;
-	const clients = useSelector((state) => state.clients);
+	const recordsPerPage = 5;
 	const lastIndex = currentPage * recordsPerPage;
 	const firstIndex = lastIndex - recordsPerPage;
-	const records = clients.slice(firstIndex, lastIndex);
-	const npage = Math.ceil(clients.length / recordsPerPage);
+	const cars = useSelector((state) => state.cars);
+	const records = cars.slice(firstIndex, lastIndex);
+	const npage = Math.ceil(cars.length / recordsPerPage);
 	const handlePageChange = (pageNumber) => {
 		setCurrentPage(pageNumber);
 	};
@@ -26,17 +26,17 @@ export default function CLients() {
 	// navigate + dispatch
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
-	// Delete Client (handleDelete)
+	// Delete Car (handleDelete)
 	const handleDelete = (id) => {
-		dispatch(deleteClient({ id: id }));
+		dispatch(deleteCar({ id: id }));
 	};
-	// Navigate To Client Detail
-	const detailClient = (id) => {
-		navigate("/admin/clients/detail/" + id);
+	// Navigate To Car Detail
+	const detailCar = (id) => {
+		navigate("/admin/cars/detail/" + id);
 	};
-	// Navigate To Edit Client
-	const editClient = (id) => {
-		navigate("/admin/clients/edit/" + id);
+	// Navigate To Edit Car
+	const editCar = (id) => {
+		navigate("/admin/cars/edit/" + id);
 	};
 	return (
 		<div className="relative flex flex-col min-h-[75vh] justify-between w-full overflow-x-auto shadow-md sm:rounded-lg">
@@ -47,19 +47,25 @@ export default function CLients() {
 							Id
 						</th>
 						<th scope="col" className="px-6 py-3">
-							First Name
+							Name
 						</th>
 						<th scope="col" className="px-6 py-3">
-							Last Name
+							Price now
 						</th>
 						<th scope="col" className="px-6 py-3">
-							Phone
+							Price before
 						</th>
 						<th scope="col" className="px-6 py-3">
-							Email
+							Marc
 						</th>
 						<th scope="col" className="px-6 py-3">
-							City
+							Model
+						</th>
+						<th scope="col" className="px-6 py-3">
+							Type
+						</th>
+						<th scope="col" className="px-6 py-3">
+							Status
 						</th>
 						<th scope="col" className="px-6 py-3 text-center">
 							Action
@@ -74,15 +80,34 @@ export default function CLients() {
 								className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600"
 							>
 								<td className="p-6 py-4">{item.id}</td>
-								<td className="px-6 py-4">{item.first_name}</td>
-								<td className="px-6 py-4">{item.last_name}</td>
-								<td className="px-6 py-4">{item.phone}</td>
-								<td className="px-6 py-4">{item.email}</td>
-								<td className="px-6 py-4">{item.city}</td>
+								<td className="px-6 py-4 flex gap-2 items-center ">
+									<img
+										className="w-13 border-2 border-white rounded-md"
+										src={item.image}
+										alt="Image"
+									/>
+									{item.name}
+								</td>
+								<td className="px-6 py-4">${item.price_now}</td>
+								<td className="px-6 py-4">${item.price_before}</td>
+								<td className="px-6 py-4">{item.marc}</td>
+								<td className="px-6 py-4">{item.model}</td>
+								<td className="px-6 py-4">{item.type}</td>
+								<td className="px-6 py-4">
+									<span
+										className={` flex p-2 rounded-md justify-center ${
+											item.available
+												? "text-green-500 bg-green-600/25"
+												: "text-red-500 bg-red-600/25"
+										}`}
+									>
+										{item.available ? "Available" : "Unavailable"}
+									</span>
+								</td>
 								<td className="px-6 py-2 text-center whitespace-nowrap">
 									<button
 										onClick={() => {
-											detailClient(item.id);
+											detailCar(item.id);
 										}}
 										className="py-1.5 px-4 text-blue-500 bg-blue-100 dark:bg-blue-700 dark:text-blue-100 hover:bg-blue-200 dark:hover:bg-blue-600 rounded-full cursor-pointer transition duration-300 ease-in-out"
 									>
@@ -90,7 +115,7 @@ export default function CLients() {
 									</button>
 									<button
 										onClick={() => {
-											editClient(item.id);
+											editCar(item.id);
 										}}
 										className="mx-4 py-1.5 px-4 text-yellow-500 bg-yellow-100 dark:bg-yellow-700 dark:text-yellow-100 hover:bg-yellow-200 dark:hover:bg-yellow-600 rounded-full cursor-pointer transition duration-300 ease-in-out"
 									>

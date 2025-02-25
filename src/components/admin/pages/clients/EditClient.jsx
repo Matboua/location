@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { editClient } from "../../redux/clients/clientsReducer";
+import { editClient } from "@redux/clients/clientsReducer";
 
 export default function EditClient() {
 	// Get Id

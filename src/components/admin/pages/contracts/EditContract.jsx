@@ -2,7 +2,7 @@ import { differenceInDays } from "date-fns";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { editContract } from "../../redux/contracts/contractsReducer";
+import { editContract } from "@redux/contracts/contractsReducer";
 
 export default function EditContract() {
 	// Get Id

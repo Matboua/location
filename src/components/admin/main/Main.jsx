@@ -1,18 +1,18 @@
 import { Route, Routes } from "react-router-dom";
 // Cars
-import Cars from "../cars/Cars";
-import CreateCar from "../cars/CreateCar";
-import DetailCar from "../cars/DetailCar";
-import EditCar from "../cars/EditCar";
+import Cars from "../pages/cars/Cars";
+import CreateCar from "../pages/cars/CreateCar";
+import DetailCar from "../pages/cars/DetailCar";
+import EditCar from "../pages/cars/EditCar";
 // Clients
-import Clients from "../clients/Clients";
-import CreateClient from "../clients/CreateClient";
-import DetailClient from "../clients/DetailClient";
-import EditClient from "../clients/EditClient";
+import Clients from "../pages/clients/Clients";
+import CreateClient from "../pages/clients/CreateClient";
+import DetailClient from "../pages/clients/DetailClient";
+import EditClient from "../pages/clients/EditClient";
 // Contract
-import Contracts from "../contracts/Contracts";
-import CreateContract from "../contracts/CreateContract";
-import EditContract from "../contracts/EditContract";
+import Contracts from "../pages/contracts/Contracts";
+import CreateContract from "../pages/contracts/CreateContract";
+import EditContract from "../pages/contracts/EditContract";
 // Function
 export default function Main() {
 	return (
