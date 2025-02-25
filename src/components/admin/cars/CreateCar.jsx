@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { addCar } from "../../redux/cars/carsReducer";
 
 export default function CreateCar() {
 	// Set New Client Data
@@ -13,6 +14,7 @@ export default function CreateCar() {
 	const [model, setModel] = useState("");
 	const [type, setType] = useState("");
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 	// handle available:
 	const [b_available, setB_available] = useState("");
 	const [available, setAvailable] = useState("");
@@ -26,11 +28,11 @@ export default function CreateCar() {
 	const nextId = (
 		cars.reduce((max, car) => Math.max(max, car.id), 0) + 1
 	).toString();
-	// Post New Car
+	// POST New Car (handleSubmit)
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const carData = {
-			nextId,
+			id: nextId,
 			image,
 			name,
 			description,
@@ -41,17 +43,8 @@ export default function CreateCar() {
 			type,
 			available,
 		};
-		fetch("https://json-server-api-q84y.onrender.com/cars", {
-			method: "POST",
-			headers: {
-				"content-type": "application/json",
-			},
-			body: JSON.stringify(carData),
-		})
-			.then(() => {
-				navigate("/admin/cars");
-			})
-			.catch((err) => console.log(err.message));
+		dispatch(addCar(carData));
+		navigate("/admin/cars");
 	};
 	return (
 		<form className="w-full" onSubmit={handleSubmit}>

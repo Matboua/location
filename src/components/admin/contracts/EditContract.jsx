@@ -10,8 +10,7 @@ export default function EditContract() {
 	const contract = useSelector((state) =>
 		state.contracts.find((contract) => contract.id == contractid)
 	);
-	// To PUT contract on submit
-	// useState
+	// Update Contract Data
 	const [car_name, setCar_name] = useState(contract.car_name);
 	const [image, setImage] = useState(contract.image);
 	const [car_id, setCar_id] = useState(contract.car_id);
@@ -20,11 +19,11 @@ export default function EditContract() {
 	const [end_date, setEnd_date] = useState(contract.end_date);
 	const [amount, setAmount] = useState(contract.amount);
 	const navigate = useNavigate();
-	// function
+	// PUT Contract (handleSubmit)
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const contractData = {
-			contractid,
+			id: contractid,
 			car_name,
 			image,
 			car_id,

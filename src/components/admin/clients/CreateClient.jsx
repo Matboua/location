@@ -19,7 +19,7 @@ export default function CreateClient() {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const clientData = {
-			nextId,
+			id: nextId,
 			first_name,
 			last_name,
 			phone,

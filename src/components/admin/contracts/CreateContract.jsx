@@ -24,7 +24,7 @@ export default function CreateContract() {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const contractData = {
-			nextId,
+			id: nextId,
 			car_name,
 			image,
 			car_id,
