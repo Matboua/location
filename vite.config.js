@@ -12,4 +12,17 @@ export default defineConfig({
 			"@redux": path.resolve(__dirname, "src/redux"),
 		},
 	},
+	// For Backend Laravel
+	server: {
+		proxy: {
+			"/api": {
+				target: "http://127.0.0.1:8000",
+				changeOrigin: true,
+				headers: {
+					Accept: "application/json",
+					"Content-Type": "application/json",
+				},
+			},
+		},
+	},
 });

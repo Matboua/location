@@ -49,14 +49,29 @@ export default function Header() {
 					</li>
 				</ul>
 				<div>
-					{/* Dark Mode Button */}
-					<button
-						className=" w-10 h-10 py-2 px-3 ml-3 cursor-pointer rounded-xl dark:bg-gray-800 hover:dark:bg-gray-700 text-blue-600 bg-blue-100 hover:bg-blue-200 font-medium"
-						onClick={() => darkModeHandler()}
-					>
-						{!dark && <FontAwesomeIcon icon={faSun} />}
-						{dark && <FontAwesomeIcon icon={faMoon} />}
-					</button>
+					<div className="flex gap-3">
+						{/* Authentication */}
+						<Link
+							className="flex items-center justify-center text-white cursor-pointer dark:bg-blue-700 bg-blue-600 dark:hover:bg-blue-600 hover:bg-blue-700 py-1 w-20 rounded-xl"
+							to="/login"
+						>
+							<button className="cursor-pointer">Login</button>
+						</Link>
+						<Link
+							className="flex items-center justify-center text-white cursor-pointer dark:bg-gray-800 bg-gray-900 dark:hover:bg-gray-700 hover:bg-gray-800  py-1 w-20 rounded-xl"
+							to="/register"
+						>
+							<button className="cursor-pointer">Register</button>
+						</Link>
+						{/* Dark Mode Button */}
+						<button
+							className="cursor-pointer w-10 h-10 py-2 px-3cursor-pointer rounded-xl dark:bg-gray-800 hover:dark:bg-gray-700 text-blue-600 bg-blue-100 hover:bg-blue-200 font-medium"
+							onClick={() => darkModeHandler()}
+						>
+							{!dark && <FontAwesomeIcon icon={faSun} />}
+							{dark && <FontAwesomeIcon icon={faMoon} />}
+						</button>
+					</div>
 				</div>
 			</div>
 		</header>

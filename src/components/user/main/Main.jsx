@@ -6,6 +6,9 @@ import About from "../pages/About";
 import Contact from "../pages/Contact";
 import PrivacyPolicy from "../pages/PrivacyPolicy";
 import TermsConditions from "../pages/TermsConditions";
+import DetailCar from "../pages/cars/DetailCar";
+import Login from "../../auth/Login";
+import Register from "../../auth/Register";
 export default function Main() {
 	return (
 		<main className="dark:text-gray-100 text-gray-900 dark:bg-gray-800 bg-gray-50 flex flex-col items-center flex-grow p-5">
@@ -13,11 +16,14 @@ export default function Main() {
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/cars" element={<Cars />} />
+				<Route path="/car/:carid" element={<DetailCar />} />
 				<Route path="/articles" element={<Articles />} />
 				<Route path="/about-us" element={<About />} />
 				<Route path="/contact-us" element={<Contact />} />
 				<Route path="/privacy-policy" element={<PrivacyPolicy />} />
 				<Route path="/terms-and-conditions" element={<TermsConditions />} />
+				<Route path="/login" element={<Login />} />
+				<Route path="/register" element={<Register />} />
 			</Routes>
 		</main>
 	);
