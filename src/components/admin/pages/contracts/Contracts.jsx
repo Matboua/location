@@ -22,6 +22,7 @@ export default function Contracts() {
 	// navigate + dispatch
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
+	const clients = useSelector((state) => state.clients);
 	// Delete Contract (handleDelete)
 	const handleDelete = (id) => {
 		dispatch(deleteContract({ id: id }));
@@ -49,7 +50,7 @@ export default function Contracts() {
 							Car Id
 						</th>
 						<th scope="col" className="px-6 py-3">
-							Client Id
+							Client CIN
 						</th>
 						<th scope="col" className="px-6 py-3">
 							Start Date
@@ -82,7 +83,11 @@ export default function Contracts() {
 									{item.car_name}
 								</td>
 								<td className="px-6 py-4">{item.car_id}</td>
-								<td className="px-6 py-4">{item.client_id}</td>
+								<td className="px-6 py-4">
+									{clients
+										.find((c) => c.id == item.client_id)
+										.cin.toUpperCase()}
+								</td>
 								<td className="px-6 py-4">{item.start_date}</td>
 								<td className="px-6 py-4">{item.end_date}</td>
 								<td className="px-6 py-4">${item.amount}</td>

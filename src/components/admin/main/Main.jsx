@@ -13,11 +13,14 @@ import EditClient from "../pages/clients/EditClient";
 import Contracts from "../pages/contracts/Contracts";
 import CreateContract from "../pages/contracts/CreateContract";
 import EditContract from "../pages/contracts/EditContract";
+import Home from "../pages/home/Home";
 // Function
 export default function Main() {
 	return (
 		<main className="dark:text-gray-100 text-gray-900 dark:bg-gray-800 bg-gray-200 flex flex-col items-center flex-grow p-5">
 			<Routes>
+				{/* Home */}
+				<Route path="/home" element={<Home />} />
 				{/* Cars */}
 				<Route path="cars" element={<Cars />} />
 				<Route path="cars/create" element={<CreateCar />} />

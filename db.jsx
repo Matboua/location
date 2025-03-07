@@ -159,6 +159,7 @@ export const db = {
 	clients: [
 		{
 			clientid: "1",
+			cin: "jb520110",
 			first_name: "Oussama",
 			last_name: "Matboua",
 			phone: "0605776853",
@@ -168,6 +169,7 @@ export const db = {
 		},
 		{
 			clientid: "2",
+			cin: "nl120220",
 			first_name: "Amine",
 			last_name: "Jamali",
 			phone: "0502302255",
@@ -177,6 +179,7 @@ export const db = {
 		},
 		{
 			id: "3",
+			cin: "jb220230",
 			first_name: "Othman",
 			last_name: "Elhyane",
 			phone: "0601022331",
@@ -185,6 +188,7 @@ export const db = {
 		},
 		{
 			id: "4",
+			cin: "lo3220",
 			first_name: "Yassine",
 			last_name: "Bennani",
 			phone: "0654789652",
@@ -193,6 +197,7 @@ export const db = {
 		},
 		{
 			id: "5",
+			cin: "cs30350",
 			first_name: "Fatima",
 			last_name: "El Amrani",
 			phone: "0701122334",
@@ -201,6 +206,7 @@ export const db = {
 		},
 		{
 			id: "6",
+			cin: "jl10220",
 			first_name: "Khalid",
 			last_name: "Saidi",
 			phone: "0623344556",
@@ -209,6 +215,7 @@ export const db = {
 		},
 		{
 			id: "7",
+			cin: "ls356884",
 			first_name: "Siham",
 			last_name: "Ouchrif",
 			phone: "0612345678",
@@ -217,6 +224,7 @@ export const db = {
 		},
 		{
 			id: "8",
+			cin: "ts56995",
 			first_name: "Hamza",
 			last_name: "El Fassi",
 			phone: "0667891234",
@@ -225,6 +233,7 @@ export const db = {
 		},
 		{
 			id: "9",
+			cin: "jb520220",
 			first_name: "Nour",
 			last_name: "Belkacem",
 			phone: "0609988776",
@@ -233,6 +242,7 @@ export const db = {
 		},
 		{
 			id: "10",
+			cin: "oj6220",
 			first_name: "Mohamed",
 			last_name: "Tazi",
 			phone: "0687452369",
@@ -241,6 +251,7 @@ export const db = {
 		},
 		{
 			id: "11",
+			cin: "jx20230",
 			first_name: "Reda",
 			last_name: "Moulay",
 			phone: "0603456789",
@@ -249,6 +260,7 @@ export const db = {
 		},
 		{
 			id: "12",
+			cin: "jl20220",
 			first_name: "Salma",
 			last_name: "Boukili",
 			phone: "0654321987",
@@ -257,6 +269,7 @@ export const db = {
 		},
 		{
 			id: "13",
+			cin: "jb70220",
 			first_name: "Zakaria",
 			last_name: "Benali",
 			phone: "0623456789",
@@ -265,6 +278,7 @@ export const db = {
 		},
 		{
 			id: "14",
+			cin: "jb532220",
 			first_name: "Imane",
 			last_name: "Chafai",
 			phone: "0676543210",
@@ -273,6 +287,7 @@ export const db = {
 		},
 		{
 			id: "15",
+			cin: "jb53220",
 			first_name: "Mehdi",
 			last_name: "El Idrissi",
 			phone: "0612349087",
@@ -281,6 +296,7 @@ export const db = {
 		},
 		{
 			id: "16",
+			cin: "jb52020",
 			first_name: "Amina",
 			last_name: "Derkaoui",
 			phone: "0698765432",
@@ -289,6 +305,7 @@ export const db = {
 		},
 		{
 			id: "17",
+			cin: "jb560220",
 			first_name: "Anas",
 			last_name: "Fakiri",
 			phone: "0609876543",
@@ -297,6 +314,7 @@ export const db = {
 		},
 		{
 			id: "18",
+			cin: "jb520223",
 			first_name: "Lina",
 			last_name: "El Yamani",
 			phone: "0687654321",
@@ -305,6 +323,7 @@ export const db = {
 		},
 		{
 			id: "19",
+			cin: "jb520280",
 			first_name: "Hassan",
 			last_name: "Belhaj",
 			phone: "0632109876",
@@ -313,6 +332,7 @@ export const db = {
 		},
 		{
 			id: "20",
+			cin: "jb520211",
 			first_name: "Sara",
 			last_name: "Ouazzani",
 			phone: "0611223344",

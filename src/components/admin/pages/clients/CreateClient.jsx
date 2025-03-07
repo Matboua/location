@@ -1,15 +1,18 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { addClient } from "../../../../redux/clients/clientsReducer";
 
 export default function CreateClient() {
 	// Set New Client Data
 	const [first_name, setFirst_name] = useState("");
+	const [cin, setCin] = useState("");
 	const [last_name, setLast_name] = useState("");
 	const [phone, setPhone] = useState("");
 	const [email, setEmail] = useState("");
 	const [city, setCity] = useState("");
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 	// Get Next Id
 	const clients = useSelector((state) => state.clients);
 	const nextId =
@@ -19,23 +22,15 @@ export default function CreateClient() {
 		e.preventDefault();
 		const clientData = {
 			id: nextId,
-			first_name,
-			last_name,
+			cin: cin.toLowerCase(),
+			first_name: first_name.toLowerCase(),
+			last_name: last_name.toLowerCase(),
 			phone,
-			email,
-			city,
+			email: email.toLowerCase(),
+			city: city.toLowerCase(),
 		};
-		fetch("https://json-server-api-q84y.onrender.com/clients", {
-			method: "POST",
-			headers: {
-				"content-type": "application/json",
-			},
-			body: JSON.stringify(clientData),
-		})
-			.then(() => {
-				navigate("/admin/clients");
-			})
-			.catch((err) => console.log(err.message));
+		dispatch(addClient(clientData));
+		navigate("/admin/clients");
 	};
 	return (
 		<form className="w-full" onSubmit={handleSubmit}>
@@ -60,6 +55,25 @@ export default function CreateClient() {
 								type="text"
 								value={nextId}
 								disabled
+							/>
+						</div>
+						<div>
+							<label
+								htmlFor="cin"
+								className="block mb-2 text-sm font-medium dark:text-gray-100 text-gray-900"
+							>
+								CIN
+							</label>
+							<input
+								placeholder="JB520335"
+								className="dark:bg-gray-800 dark:border-gray-700 bg-gray-50 border border-gray-300 dark:text-gray-100 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5"
+								id="cin"
+								name="cin"
+								type="text"
+								value={cin}
+								onChange={(e) => {
+									setCin(e.target.value);
+								}}
 							/>
 						</div>
 						<div>

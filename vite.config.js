@@ -10,6 +10,7 @@ export default defineConfig({
 		alias: {
 			"@assets": path.resolve(__dirname, "src/assets"),
 			"@redux": path.resolve(__dirname, "src/redux"),
+			"@": path.resolve(__dirname, "./src"),
 		},
 	},
 	// For Backend Laravel

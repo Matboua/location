@@ -8,12 +8,14 @@ import PrivacyPolicy from "../pages/PrivacyPolicy";
 import TermsConditions from "../pages/TermsConditions";
 import DetailCar from "../pages/cars/DetailCar";
 import Login from "../../auth/Login";
+import LoginAdmin from "../../admin/auth/Login";
 import Register from "../../auth/Register";
 export default function Main() {
 	return (
 		<main className="dark:text-gray-100 text-gray-900 dark:bg-gray-800 bg-gray-50 flex flex-col items-center flex-grow p-5">
 			{/* Cars */}
 			<Routes>
+				<Route path="/admin-login" element={<LoginAdmin />} />
 				<Route path="/" element={<Home />} />
 				<Route path="/cars" element={<Cars />} />
 				<Route path="/car/:carid" element={<DetailCar />} />

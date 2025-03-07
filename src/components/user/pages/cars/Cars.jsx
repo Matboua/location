@@ -2,10 +2,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCar } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
 import Pagination from "../../../admin/pagination/Pagination";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { AppContext } from "../../../../context/AppContext";
+import BookLogin from "./BookLogin";
 
 export default function Main() {
+	const { user } = useContext(AppContext);
+	const navigate = useNavigate();
+	const [showLoginPopup, setShowLoginPopup] = useState(false);
 	// Start Pagination
 	const [currentPage, setCurrentPage] = useState(1);
 	const recordsPerPage = 8;
@@ -33,9 +38,15 @@ export default function Main() {
 										key={item.id}
 										className="relative flex max-w-[280px] flex-col overflow-hidden rounded-lg dark:border-gray-800 dark:bg-gray-900 bg-white	 shadow-md"
 									>
-										<Link
+										<button
 											className="relative mx-3 mt-3 flex h-48 overflow-hidden rounded-xl"
-											to={`/car/${item.id}`}
+											onClick={() => {
+												if (user) {
+													navigate(`/car/${item.id}`);
+												} else {
+													setShowLoginPopup(true);
+												}
+											}}
 										>
 											<img
 												className="object-cover"
@@ -45,13 +56,22 @@ export default function Main() {
 											<span className="absolute top-0 left-0 m-2 rounded-full bg-black px-2 text-center text-xs font-medium text-white">
 												39% OFF
 											</span>
-										</Link>
+										</button>
+
 										<div className="mt-3 px-4 pb-4">
-											<Link to={`/car/${item.id}`}>
+											<button
+												onClick={() => {
+													if (user) {
+														navigate(`/car/${item.id}`);
+													} else {
+														setShowLoginPopup(true);
+													}
+												}}
+											>
 												<h5 className="text-lg tracking-tight text-gray-900 dark:text-gray-100">
 													{item.name}
 												</h5>
-											</Link>
+											</button>
 											<div className="mt-2 mb-4 flex justify-between">
 												<p className="flex flex-col gap-1">
 													<span className="text-2xl font-bold text-blue-600">
@@ -81,9 +101,15 @@ export default function Main() {
 													</span>
 												</div>
 											</div>
-											<a
-												href="#"
-												className="flex items-center justify-center rounded-md bg-blue-600 px-4 py-2 text-center text-sm font-medium text-gray-100 hover:bg-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-300"
+											<button
+												className="flex cursor-pointer w-full items-center justify-center rounded-md bg-blue-600 px-4 py-2 text-center text-sm font-medium text-gray-100 hover:bg-blue-500 focus:outline-none"
+												onClick={() => {
+													if (user) {
+														navigate(`/car/${item.id}`);
+													} else {
+														setShowLoginPopup(true);
+													}
+												}}
 											>
 												<svg
 													xmlns="http://www.w3.org/2000/svg"
@@ -96,7 +122,7 @@ export default function Main() {
 													<FontAwesomeIcon icon={faCar} />
 												</svg>
 												Book now
-											</a>
+											</button>
 										</div>
 									</div>
 								)
@@ -108,6 +134,7 @@ export default function Main() {
 					handlePageChange={handlePageChange}
 				/>
 			</div>
+			{showLoginPopup && <BookLogin setShowLoginPopup={setShowLoginPopup} />}
 		</section>
 	);
 }

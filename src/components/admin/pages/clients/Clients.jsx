@@ -47,6 +47,9 @@ export default function CLients() {
 							Id
 						</th>
 						<th scope="col" className="px-6 py-3">
+							CIN
+						</th>
+						<th scope="col" className="px-6 py-3">
 							First Name
 						</th>
 						<th scope="col" className="px-6 py-3">
@@ -74,11 +77,21 @@ export default function CLients() {
 								className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600"
 							>
 								<td className="p-6 py-4">{item.id}</td>
-								<td className="px-6 py-4">{item.first_name}</td>
-								<td className="px-6 py-4">{item.last_name}</td>
+								<td className="p-6 py-4">{item.cin.toUpperCase()}</td>
+								<td className="px-6 py-4">
+									{item.first_name[0].toUpperCase() +
+										item.first_name.slice(1).toLowerCase()}
+								</td>
+								<td className="px-6 py-4">
+									{item.last_name[0].toUpperCase() +
+										item.last_name.slice(1).toLowerCase()}
+								</td>
 								<td className="px-6 py-4">{item.phone}</td>
 								<td className="px-6 py-4">{item.email}</td>
-								<td className="px-6 py-4">{item.city}</td>
+								<td className="px-6 py-4">
+									{item.city[0].toUpperCase() +
+										item.city.slice(1).toLowerCase()}
+								</td>
 								<td className="px-6 py-2 text-center whitespace-nowrap">
 									<button
 										onClick={() => {

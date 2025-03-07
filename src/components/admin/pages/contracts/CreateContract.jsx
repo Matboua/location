@@ -115,19 +115,20 @@ export default function CreateContract() {
 								disabled
 							/>
 						</div>
-						{/* Client Name */}
+						{/* Client CIN */}
 						<div>
-							<label htmlFor="client_name">Client Name</label>
+							<label htmlFor="cin">Client Name</label>
 							<select
-								name="client_name"
-								id="client_name"
+								name="cin"
+								id="cin"
 								className="dark:bg-gray-800 dark:border-gray-700 bg-gray-50 border border-gray-300 dark:text-gray-100 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5"
 								onChange={(e) => handleClient(e)}
 							>
 								<option value="">Please Select a Client</option>
 								{clients.map((client, key) => (
 									<option key={key} value={client.id}>
-										{client.first_name} {client.last_name}
+										{client.cin.toUpperCase()} | {client.first_name}{" "}
+										{client.last_name}
 									</option>
 								))}
 							</select>
@@ -159,10 +160,11 @@ export default function CreateContract() {
 							</label>
 							<input
 								placeholder="10"
-								className="dark:bg-gray-800 dark:border-gray-700 bg-gray-50 border border-gray-300 dark:text-gray-100 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5"
+								className="dark:bg-gray-800 dark:border-gray-700 bg-gray-50 border border-gray-300 dark:text-gray-100 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 cursor-pointer"
 								id="start_date"
 								name="start_date"
 								type="date"
+								onClick={(e) => e.target.showPicker()}
 								value={start_date}
 								onChange={(e) => handleStartDate(e)}
 							/>
@@ -177,10 +179,11 @@ export default function CreateContract() {
 							</label>
 							<input
 								placeholder="10"
-								className="dark:bg-gray-800 dark:border-gray-700 bg-gray-50 border border-gray-300 dark:text-gray-100 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5"
+								className="dark:bg-gray-800 dark:border-gray-700 bg-gray-50 border border-gray-300 dark:text-gray-100 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 cursor-pointer"
 								id="end_date"
 								name="end_date"
 								type="date"
+								onClick={(e) => e.target.showPicker()}
 								value={end_date}
 								onChange={(e) => handleEndDate(e)}
 							/>
@@ -203,7 +206,6 @@ export default function CreateContract() {
 								disabled
 							/>
 						</div>
-
 						<button
 							className=" cursor-pointer w-full bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center  focus:ring-blue-800 text-white"
 							type="submit"
