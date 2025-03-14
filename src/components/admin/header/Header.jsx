@@ -1,13 +1,18 @@
+"use client";
+
 import {
 	faCarAlt,
 	faFileCirclePlus,
 	faMoon,
+	faSignOutAlt,
 	faSun,
 	faUserPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
+import { useAdminAuth } from "../../../context/AdminAuthContext";
+
 export default function Header() {
 	// Dark Mode
 	const [dark, setDark] = useState(false);
@@ -15,11 +20,16 @@ export default function Header() {
 		setDark(!dark);
 		document.documentElement.classList.toggle("dark");
 	};
+
+	// Admin Auth
+	const { adminLogout } = useAdminAuth();
+
 	// Urls
 	const isHome = useLocation().pathname.includes("/home");
 	const isCars = useLocation().pathname.includes("/cars");
 	const isClients = useLocation().pathname.includes("/clients");
 	const isContracts = useLocation().pathname.includes("/contract");
+
 	return (
 		<header className="dark:text-gray-100 text-gray-900 dark:bg-gray-900 bg-white p-4 min-h-[73px] flex items-center">
 			{isHome && (
@@ -60,14 +70,25 @@ export default function Header() {
 					</Link>
 				</div>
 			)}
-			{/* Dark Mode Button */}
-			<button
-				className=" w-10 h-10 py-2 px-3 ml-3 cursor-pointer rounded-xl dark:bg-gray-800 hover:dark:bg-gray-700 text-blue-600 bg-blue-100 hover:bg-blue-200 font-medium"
-				onClick={() => darkModeHandler()}
-			>
-				{!dark && <FontAwesomeIcon icon={faSun} />}
-				{dark && <FontAwesomeIcon icon={faMoon} />}
-			</button>
+
+			<div className="flex ml-auto">
+				{/* Logout Button */}
+				<button
+					onClick={adminLogout}
+					className="mr-3 py-2 px-3 cursor-pointer rounded-xl dark:bg-red-800 hover:dark:bg-red-700 text-white bg-red-600 hover:bg-red-700 font-medium flex items-center"
+				>
+					<FontAwesomeIcon icon={faSignOutAlt} className="mr-2" /> Logout
+				</button>
+
+				{/* Dark Mode Button */}
+				<button
+					className="w-10 h-10 py-2 px-3 cursor-pointer rounded-xl dark:bg-gray-800 hover:dark:bg-gray-700 text-blue-600 bg-blue-100 hover:bg-blue-200 font-medium"
+					onClick={() => darkModeHandler()}
+				>
+					{!dark && <FontAwesomeIcon icon={faSun} />}
+					{dark && <FontAwesomeIcon icon={faMoon} />}
+				</button>
+			</div>
 		</header>
 	);
 }

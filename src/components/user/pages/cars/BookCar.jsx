@@ -1,11 +1,13 @@
-import { differenceInDays } from "date-fns";
+"use client";
+
 import { useContext, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../../../context/AppContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCar } from "@fortawesome/free-solid-svg-icons";
-import { addContract } from "../../../../redux/contracts/contractsReducer";
+import { addContractAsync } from "../../../../redux/contracts/contractsReducer";
+import { differenceInDays } from "date-fns";
 
 export default function BookCar({
 	carid,
@@ -31,38 +33,67 @@ export default function BookCar({
 	// function
 	const handleSubmit = (e) => {
 		e.preventDefault();
+
+		// Validate required fields
+		if (!start_date || !end_date) {
+			alert("Please select both pickup and return dates");
+			return;
+		}
+
+		// Validate amount is a valid number and greater than 0
+		if (isNaN(amount) || Number.parseFloat(amount) <= 0) {
+			alert("Please choose valid dates to calculate the amount");
+			return;
+		}
+
 		const contractData = {
-			id: nextId,
+			id: nextId.toString(),
 			car_name: carname,
 			image: carimage,
 			car_id: carid,
 			client_id: userid,
 			start_date,
 			end_date,
-			amount: parseFloat(amount).toFixed(2),
+			amount: Number.parseFloat(amount).toFixed(2),
 		};
-		dispatch(addContract(contractData));
-		navigate("/admin/contracts");
+
+		// Change from addContract to addContractAsync to persist data
+		dispatch(addContractAsync(contractData));
+		navigate("/dashboard/bookings");
 	};
 	// Start Date and Amount Calc
 	const handleStartDate = (e) => {
 		setStart_date(e.target.value);
-		setAmount(
-			carprice && end_date
-				? carprice *
-						differenceInDays(new Date(end_date), new Date(e.target.value))
-				: "0"
-		);
+
+		// Calculate amount only if both dates are valid and end_date is after start_date
+		if (carprice && end_date && new Date(end_date) > new Date(e.target.value)) {
+			const days = differenceInDays(
+				new Date(end_date),
+				new Date(e.target.value)
+			);
+			setAmount(days > 0 ? (carprice * days).toString() : "0");
+		} else {
+			setAmount("0");
+		}
 	};
 	// End Date and Amount Calc
 	const handleEndDate = (e) => {
 		setEnd_date(e.target.value);
-		setAmount(
-			carprice && start_date
-				? carprice *
-						differenceInDays(new Date(e.target.value), new Date(start_date))
-				: "0"
-		);
+
+		// Calculate amount only if both dates are valid and end_date is after start_date
+		if (
+			carprice &&
+			start_date &&
+			new Date(e.target.value) > new Date(start_date)
+		) {
+			const days = differenceInDays(
+				new Date(e.target.value),
+				new Date(start_date)
+			);
+			setAmount(days > 0 ? (carprice * days).toString() : "0");
+		} else {
+			setAmount("0");
+		}
 	};
 	return (
 		<form onSubmit={handleSubmit}>
@@ -77,7 +108,7 @@ export default function BookCar({
 					</label>
 					<input
 						placeholder="10"
-						className="dark:bg-gray-800 dark:border-gray-700 bg-gray-50 border border-gray-300 dark:text-gray-100 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 cursor-pointer"
+						className="dark:bg-gray-900 dark:border-gray-700 bg-gray-50 border border-gray-300 dark:text-gray-100 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 cursor-pointer"
 						id="start_date"
 						name="start_date"
 						type="date"
@@ -96,7 +127,7 @@ export default function BookCar({
 					</label>
 					<input
 						placeholder="10"
-						className="dark:bg-gray-800 dark:border-gray-700 bg-gray-50 border border-gray-300 dark:text-gray-100 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 cursor-pointer"
+						className="dark:bg-gray-900 dark:border-gray-700 bg-gray-50 border border-gray-300 dark:text-gray-100 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 cursor-pointer"
 						id="end_date"
 						name="end_date"
 						type="date"
@@ -115,7 +146,7 @@ export default function BookCar({
 					</label>
 					<input
 						placeholder="Auto Calc"
-						className="dark:bg-gray-800 dark:border-gray-700 bg-gray-50 border border-gray-300 dark:text-gray-100 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5"
+						className="dark:bg-gray-900 dark:border-gray-700 bg-gray-50 border border-gray-300 dark:text-gray-100 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5"
 						id="amount"
 						name="amount"
 						type="text"

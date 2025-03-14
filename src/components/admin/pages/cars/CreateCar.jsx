@@ -1,7 +1,9 @@
+"use client";
+
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addCar } from "@redux/cars/carsReducer";
+import { addCarAsync } from "../../../../redux/cars/carsReducer";
 
 export default function CreateCar() {
 	// Set New Client Data
@@ -25,23 +27,24 @@ export default function CreateCar() {
 	};
 	// Get Next Id
 	const cars = useSelector((state) => state.cars);
-	const nextId = cars.reduce((max, car) => Math.max(max, car.id), 0) + 1;
+	const nextId =
+		cars.length > 0 ? Math.max(...cars.map((car) => Number(car.id))) + 1 : 1;
 	// POST New Car (handleSubmit)
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		const carData = {
-			id: nextId,
+			id: String(nextId),
 			image,
 			name,
 			description,
-			price_now: parseFloat(price_now).toFixed(2),
-			price_before: parseFloat(price_before).toFixed(2),
+			price_now: Number.parseFloat(price_now).toFixed(2),
+			price_before: Number.parseFloat(price_before).toFixed(2),
 			marc,
 			model,
 			type,
 			available,
 		};
-		dispatch(addCar(carData));
+		dispatch(addCarAsync(carData));
 		navigate("/admin/cars");
 	};
 	return (

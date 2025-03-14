@@ -1,3 +1,5 @@
+"use client";
+
 import { differenceInDays } from "date-fns";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -25,6 +27,19 @@ export default function EditContract() {
 	// PUT Contract (handleSubmit)
 	const handleSubmit = (e) => {
 		e.preventDefault();
+
+		// Validate required fields
+		if (!car_id || !client_id || !start_date || !end_date) {
+			alert("Please fill in all required fields");
+			return;
+		}
+
+		// Validate amount is a valid number and greater than 0
+		if (isNaN(amount) || Number.parseFloat(amount) <= 0) {
+			alert("Please choose valid dates to calculate the amount");
+			return;
+		}
+
 		const contractData = {
 			id: contractid,
 			car_name,
@@ -33,7 +48,7 @@ export default function EditContract() {
 			client_id,
 			start_date,
 			end_date,
-			amount: parseFloat(amount).toFixed(2),
+			amount: Number.parseFloat(amount).toFixed(2),
 		};
 		dispatch(editContract(contractData));
 		navigate("/admin/contracts");
@@ -45,22 +60,40 @@ export default function EditContract() {
 	// Start Date and Amount Calc
 	const handleStartDate = (e) => {
 		setStart_date(e.target.value);
-		setAmount(
-			car_price && end_date
-				? car_price *
-						differenceInDays(new Date(end_date), new Date(e.target.value))
-				: "0"
-		);
+
+		// Calculate amount only if both dates are valid and end_date is after start_date
+		if (
+			car_price &&
+			end_date &&
+			new Date(end_date) > new Date(e.target.value)
+		) {
+			const days = differenceInDays(
+				new Date(end_date),
+				new Date(e.target.value)
+			);
+			setAmount(days > 0 ? (car_price * days).toString() : "0");
+		} else {
+			setAmount("0");
+		}
 	};
 	// End Date and Amount Calc
 	const handleEndDate = (e) => {
 		setEnd_date(e.target.value);
-		setAmount(
-			car_price && start_date
-				? car_price *
-						differenceInDays(new Date(e.target.value), new Date(start_date))
-				: "0"
-		);
+
+		// Calculate amount only if both dates are valid and end_date is after start_date
+		if (
+			car_price &&
+			start_date &&
+			new Date(e.target.value) > new Date(start_date)
+		) {
+			const days = differenceInDays(
+				new Date(e.target.value),
+				new Date(start_date)
+			);
+			setAmount(days > 0 ? (car_price * days).toString() : "0");
+		} else {
+			setAmount("0");
+		}
 	};
 	// Car Info and Amount Calc
 	// useState

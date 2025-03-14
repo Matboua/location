@@ -1,7 +1,9 @@
+"use client";
+
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { editCar } from "@redux/cars/carsReducer";
+import { editCarAsync } from "../../../../redux/cars/carsReducer";
 
 export default function EditCar() {
 	// Get Id
@@ -9,21 +11,21 @@ export default function EditCar() {
 	// Get Car
 	const car = useSelector((state) => state.cars.find((car) => car.id == carid));
 	// Update Car Data
-	const [image, setImage] = useState(car.image);
-	const [name, setName] = useState(car.name);
-	const [description, setDescription] = useState(car.description);
-	const [price_now, setPrice_now] = useState(car.price_now);
-	const [price_before, setPrice_before] = useState(car.price_before);
-	const [marc, setMarc] = useState(car.marc);
-	const [model, setModel] = useState(car.model);
-	const [type, setType] = useState(car.type);
+	const [image, setImage] = useState(car?.image || "");
+	const [name, setName] = useState(car?.name || "");
+	const [description, setDescription] = useState(car?.description || "");
+	const [price_now, setPrice_now] = useState(car?.price_now || "");
+	const [price_before, setPrice_before] = useState(car?.price_before || "");
+	const [marc, setMarc] = useState(car?.marc || "");
+	const [model, setModel] = useState(car?.model || "");
+	const [type, setType] = useState(car?.type || "");
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	// handle available:
 	const [b_available, setB_available] = useState(
-		car.available ? "Available" : "Unavailable"
+		car?.available ? "Available" : "Unavailable"
 	);
-	const [available, setAvailable] = useState(car.available);
+	const [available, setAvailable] = useState(car?.available || false);
 	const handleAvailable = (e) => {
 		setB_available(e.target.value);
 		if (e.target.value == "Available") setAvailable(true);
@@ -37,16 +39,21 @@ export default function EditCar() {
 			image,
 			name: name.at(0).toUpperCase() + name.slice(1),
 			description,
-			price_now: parseFloat(price_now).toFixed(2),
-			price_before: parseFloat(price_before).toFixed(2),
+			price_now: Number.parseFloat(price_now).toFixed(2),
+			price_before: Number.parseFloat(price_before).toFixed(2),
 			marc: marc.at(0).toUpperCase() + marc.slice(1),
 			model: model.at(0).toUpperCase() + model.slice(1),
 			type: type.at(0).toUpperCase() + type.slice(1),
 			available,
 		};
-		dispatch(editCar(carData));
+		dispatch(editCarAsync(carData));
 		navigate("/admin/cars");
 	};
+
+	if (!car) {
+		return <div>Loading...</div>;
+	}
+
 	return (
 		<form className="w-full" onSubmit={handleSubmit}>
 			<div className="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">

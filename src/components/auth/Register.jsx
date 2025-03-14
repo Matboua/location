@@ -1,10 +1,16 @@
+"use client";
+
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../../context/AppContext";
+import { useDispatch, useSelector } from "react-redux";
+import { addClient } from "../../redux/clients/clientsReducer";
 
 export default function Register() {
 	const { setToken, user } = useContext(AppContext);
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
+
 	useEffect(() => {
 		if (user) {
 			navigate("/");
@@ -22,24 +28,82 @@ export default function Register() {
 		password_confirmation: "",
 	});
 	const [errors, setErrors] = useState("");
+	const [isSubmitting, setIsSubmitting] = useState(false);
+
+	// Get next ID for JSON server
+	const clients = useSelector((state) => state.clients);
+	const nextId =
+		clients.length > 0
+			? Math.max(...clients.map((client) => Number(client.id))) + 1
+			: 1;
+
 	async function handleRegister(e) {
 		e.preventDefault();
-		const res = await fetch("/api/register", {
-			method: "post",
-			body: JSON.stringify(formData),
-		});
-		const data = await res.json();
-		if (data.errors) {
-			setErrors(data.errors || !res.ok);
-		} else {
+		setIsSubmitting(true);
+		setErrors("");
+
+		try {
+			// Register with Laravel backend
+			const res = await fetch("/api/register", {
+				method: "post",
+				headers: {
+					"Content-Type": "application/json",
+					Accept: "application/json",
+				},
+				body: JSON.stringify(formData),
+			});
+
+			const data = await res.json();
+
+			if (data.errors || !res.ok) {
+				setErrors(data.errors || { general: ["Registration failed"] });
+				setIsSubmitting(false);
+				return;
+			}
+
+			// If registration successful, store token and login user
 			localStorage.setItem("token", data.token);
 			setToken(data.token);
+
+			// Add user to JSON server (Redux store)
+			const clientData = {
+				id: String(nextId),
+				cin: formData.cin.toLowerCase(),
+				first_name: formData.first_name.toLowerCase(),
+				last_name: formData.last_name.toLowerCase(),
+				phone: formData.phone,
+				email: formData.email.toLowerCase(),
+				city: formData.city.toLowerCase(),
+			};
+
+			// Add to JSON server via Redux
+			dispatch(addClient(clientData));
+
+			// Also add to JSON server directly to ensure persistence
+			await fetch("http://localhost:3001/clients", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(clientData),
+			});
+
+			// Navigate to home page
 			navigate("/");
+		} catch (error) {
+			console.error("Registration error:", error);
+			setErrors({
+				general: ["An unexpected error occurred. Please try again."],
+			});
+		} finally {
+			setIsSubmitting(false);
 		}
 	}
+
 	if (user) {
 		return null;
 	}
+
 	return (
 		<section
 			className="flex flex-col items-center w-full justify-center"
@@ -53,8 +117,9 @@ export default function Register() {
 					errors.city ||
 					errors.email ||
 					errors.phone ||
-					errors.password) && (
-					<ul className="dark:bg-red-800/10 bg-red-100 px-4 text-red-600 border-2 border-red-600 rounded-2xl mb-8 list-disc list-inside">
+					errors.password ||
+					errors.general) && (
+					<ul className="dark:bg-red-800/10 bg-red-100 py-3 px-4 text-red-600 border-2 border-red-600 rounded-2xl mb-8 list-disc list-inside">
 						{errors.first_name && <li>{errors.first_name[0]}</li>}
 						{errors.last_name && <li>{errors.last_name[0]}</li>}
 						{errors.cin && <li>{errors.cin[0]}</li>}
@@ -62,6 +127,8 @@ export default function Register() {
 						{errors.email && <li>{errors.email[0]}</li>}
 						{errors.phone && <li>{errors.phone[0]}</li>}
 						{errors.password && <li>{errors.password[0]}</li>}
+						{errors.general &&
+							errors.general.map((err, index) => <li key={index}>{err}</li>)}
 					</ul>
 				)}
 				<form
@@ -80,6 +147,7 @@ export default function Register() {
 							onChange={(e) => {
 								setFormData({ ...formData, first_name: e.target.value });
 							}}
+							required
 						/>
 					</div>
 					<div>
@@ -94,6 +162,7 @@ export default function Register() {
 							onChange={(e) => {
 								setFormData({ ...formData, last_name: e.target.value });
 							}}
+							required
 						/>
 					</div>
 					<div>
@@ -108,6 +177,7 @@ export default function Register() {
 							onChange={(e) => {
 								setFormData({ ...formData, cin: e.target.value });
 							}}
+							required
 						/>
 					</div>
 					<div>
@@ -122,6 +192,7 @@ export default function Register() {
 							onChange={(e) => {
 								setFormData({ ...formData, city: e.target.value });
 							}}
+							required
 						/>
 					</div>
 					<div>
@@ -136,6 +207,7 @@ export default function Register() {
 							onChange={(e) => {
 								setFormData({ ...formData, email: e.target.value });
 							}}
+							required
 						/>
 					</div>
 					<div>
@@ -150,6 +222,7 @@ export default function Register() {
 							onChange={(e) => {
 								setFormData({ ...formData, phone: e.target.value });
 							}}
+							required
 						/>
 					</div>
 
@@ -165,6 +238,7 @@ export default function Register() {
 							onChange={(e) => {
 								setFormData({ ...formData, password: e.target.value });
 							}}
+							required
 						/>
 					</div>
 
@@ -183,11 +257,16 @@ export default function Register() {
 									password_confirmation: e.target.value,
 								});
 							}}
+							required
 						/>
 					</div>
 
-					<button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 rounded-lg transition-colors cursor-pointer col-span-2 justify-self-center">
-						Sign Up
+					<button
+						className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 rounded-lg transition-colors cursor-pointer col-span-2 justify-self-center disabled:opacity-50 disabled:cursor-not-allowed"
+						type="submit"
+						disabled={isSubmitting}
+					>
+						{isSubmitting ? "Creating Account..." : "Sign Up"}
 					</button>
 				</form>
 

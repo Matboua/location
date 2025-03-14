@@ -1,13 +1,18 @@
+"use client";
+
 import { differenceInDays } from "date-fns";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { addContractAsync } from "../../../../redux/contracts/contractsReducer";
 
 export default function CreateContract() {
 	// Get Next Id
 	const contracts = useSelector((state) => state.contracts);
 	const nextId =
-		contracts.reduce((max, contract) => Math.max(max, contract.id), 0) + 1;
+		contracts.length > 0
+			? Math.max(...contracts.map((contract) => Number(contract.id))) + 1
+			: 1;
 
 	// To POST contract on submit
 	// useState
@@ -19,30 +24,35 @@ export default function CreateContract() {
 	const [end_date, setEnd_date] = useState("");
 	const [amount, setAmount] = useState("0");
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
 	// function
 	const handleSubmit = (e) => {
 		e.preventDefault();
+
+		// Validate required fields
+		if (!car_id || !client_id || !start_date || !end_date) {
+			alert("Please fill in all required fields");
+			return;
+		}
+
+		// Validate amount is a valid number and greater than 0
+		if (isNaN(amount) || Number.parseFloat(amount) <= 0) {
+			alert("Please choose valid dates to calculate the amount");
+			return;
+		}
+
 		const contractData = {
-			id: nextId,
+			id: String(nextId),
 			car_name,
 			image,
 			car_id,
 			client_id,
 			start_date,
 			end_date,
-			amount: parseFloat(amount).toFixed(2),
+			amount: Number.parseFloat(amount).toFixed(2),
 		};
-		fetch("https://json-server-api-q84y.onrender.com/contracts", {
-			method: "POST",
-			headers: {
-				"content-type": "application/json",
-			},
-			body: JSON.stringify(contractData),
-		})
-			.then(() => {
-				navigate("/admin/contracts");
-			})
-			.catch((err) => console.log(err.message));
+		dispatch(addContractAsync(contractData));
+		navigate("/admin/contracts");
 	};
 	// Get cars
 	const cars = useSelector((state) => state.cars);
@@ -51,22 +61,40 @@ export default function CreateContract() {
 	// Start Date and Amount Calc
 	const handleStartDate = (e) => {
 		setStart_date(e.target.value);
-		setAmount(
-			car_price && end_date
-				? car_price *
-						differenceInDays(new Date(end_date), new Date(e.target.value))
-				: "0"
-		);
+
+		// Calculate amount only if both dates are valid and end_date is after start_date
+		if (
+			car_price &&
+			end_date &&
+			new Date(end_date) > new Date(e.target.value)
+		) {
+			const days = differenceInDays(
+				new Date(end_date),
+				new Date(e.target.value)
+			);
+			setAmount(days > 0 ? (car_price * days).toString() : "0");
+		} else {
+			setAmount("0");
+		}
 	};
 	// End Date and Amount Calc
 	const handleEndDate = (e) => {
 		setEnd_date(e.target.value);
-		setAmount(
-			car_price && start_date
-				? car_price *
-						differenceInDays(new Date(e.target.value), new Date(start_date))
-				: "0"
-		);
+
+		// Calculate amount only if both dates are valid and end_date is after start_date
+		if (
+			car_price &&
+			start_date &&
+			new Date(e.target.value) > new Date(start_date)
+		) {
+			const days = differenceInDays(
+				new Date(e.target.value),
+				new Date(start_date)
+			);
+			setAmount(days > 0 ? (car_price * days).toString() : "0");
+		} else {
+			setAmount("0");
+		}
 	};
 	// Car Info and Amount Calc
 	// useState
@@ -202,7 +230,7 @@ export default function CreateContract() {
 								id="amount"
 								name="amount"
 								type="text"
-								value={amount > 0 ? amount : "Please choose a valid date"}
+								value={amount > 0 ? amount : "Please choose valid dates"}
 								disabled
 							/>
 						</div>
